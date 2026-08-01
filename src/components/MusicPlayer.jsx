@@ -98,9 +98,18 @@ export default function MusicPlayer({ isPlaying, setIsPlaying, autoStartTrigger 
       if (audioRef.current.currentTime < LOOP_START_SEC || audioRef.current.currentTime >= LOOP_END_SEC) {
         audioRef.current.currentTime = LOOP_START_SEC;
       }
-      audioRef.current.play().catch(() => {
-        startNasheedSynthPad();
-      });
+
+      const promise = audioRef.current.play();
+      if (promise !== undefined) {
+        promise
+          .then(() => {
+            setAudioLoaded(true);
+          })
+          .catch((err) => {
+            console.warn('HTML5 Audio autoplay restricted on mobile:', err);
+            startNasheedSynthPad();
+          });
+      }
     } else {
       startNasheedSynthPad();
     }

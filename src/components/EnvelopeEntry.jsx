@@ -4,11 +4,12 @@ import { motion, AnimatePresence } from 'framer-motion';
 export default function EnvelopeEntry({ isOpen, onOpen }) {
   const [isOpening, setIsOpening] = useState(false);
 
-  const handleOpenClick = () => {
+  const handleOpenClick = (e) => {
+    if (isOpening) return;
     setIsOpening(true);
-    setTimeout(() => {
-      onOpen();
-    }, 1400);
+
+    // Call onOpen SYNCHRONOUSLY inside the touch/click user gesture handler to unlock mobile audio playback
+    onOpen();
   };
 
   return (
@@ -35,6 +36,7 @@ export default function EnvelopeEntry({ isOpen, onOpen }) {
             {/* Outer Envelope Wrap */}
             <div
               onClick={handleOpenClick}
+              onTouchStart={handleOpenClick}
               className={`relative flex h-[15rem] w-[21rem] sm:h-[18rem] sm:w-[26rem] cursor-pointer items-center justify-center rounded-2xl border border-[#d4af37]/45 bg-gradient-to-br from-[#2a1d12] via-[#1c130b] to-[#120b06] shadow-[0_30px_90px_rgba(0,0,0,0.95)] backdrop-blur-xl transition-transform duration-700 hover:scale-[1.02] ${
                 isOpening ? 'open' : ''
               }`}
