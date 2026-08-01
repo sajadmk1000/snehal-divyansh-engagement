@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
-import { Volume2, VolumeX, Music } from 'lucide-react';
+import { Volume2, VolumeX } from 'lucide-react';
 
 export default function MusicPlayer({ isPlaying, setIsPlaying, autoStartTrigger }) {
   const [audioLoaded, setAudioLoaded] = useState(false);
@@ -8,8 +8,12 @@ export default function MusicPlayer({ isPlaying, setIsPlaying, autoStartTrigger 
   const gainNodeRef = useRef(null);
   const audioRef = useRef(null);
 
-  // Initialize Web Audio Synth as soothing fallback pad
-  const startSynthPad = useCallback(() => {
+  // Exact Loop Window: 1:00 (60 seconds) to 1:40 (100 seconds)
+  const LOOP_START_SEC = 60;
+  const LOOP_END_SEC = 100;
+
+  // Initialize Web Audio Synth Fallback with Oriental Maqam Hijaz/Bayati Harmonics
+  const startNasheedSynthPad = useCallback(() => {
     try {
       if (!audioContextRef.current) {
         const AudioContext = window.AudioContext || window.webkitAudioContext;
@@ -21,34 +25,31 @@ export default function MusicPlayer({ isPlaying, setIsPlaying, autoStartTrigger 
         ctx.resume();
       }
 
-      // If already playing synth, return
       if (oscillatorsRef.current.length > 0) return;
 
       const masterGain = ctx.createGain();
       masterGain.gain.setValueAtTime(0.001, ctx.currentTime);
-      masterGain.gain.exponentialRampToValueAtTime(0.12, ctx.currentTime + 3);
+      masterGain.gain.exponentialRampToValueAtTime(0.16, ctx.currentTime + 2.5);
       masterGain.connect(ctx.destination);
       gainNodeRef.current = masterGain;
 
-      // Soothing Indian / Oriental Serene Pentatonic Chords (C4, G4, C5, E5, G5)
-      const freqs = [261.63, 392.00, 523.25, 659.25, 783.99];
+      // Serene Oriental Maqam Hijaz / Bayati Nasheed Frequencies
+      const freqs = [293.66, 311.13, 369.99, 392.00, 440.00, 587.33];
       const oscs = freqs.map((freq, idx) => {
         const osc = ctx.createOscillator();
         const oscGain = ctx.createGain();
 
-        // Soft sine & triangle for warm acoustic tone
         osc.type = idx % 2 === 0 ? 'sine' : 'triangle';
         osc.frequency.setValueAtTime(freq, ctx.currentTime);
 
-        // LFO for subtle breathing pitch/vibrato
         const lfo = ctx.createOscillator();
         const lfoGain = ctx.createGain();
-        lfo.frequency.value = 0.2 + idx * 0.05;
-        lfoGain.gain.value = 1.5;
+        lfo.frequency.value = 0.18 + idx * 0.04;
+        lfoGain.gain.value = 1.2;
         lfo.connect(osc.frequency);
         lfo.start();
 
-        oscGain.gain.value = 0.18 / freqs.length;
+        oscGain.gain.value = 0.16 / freqs.length;
         osc.connect(oscGain);
         oscGain.connect(masterGain);
         osc.start();
@@ -62,7 +63,7 @@ export default function MusicPlayer({ isPlaying, setIsPlaying, autoStartTrigger 
     }
   }, []);
 
-  const stopSynthPad = useCallback(() => {
+  const stopNasheedSynthPad = useCallback(() => {
     if (gainNodeRef.current && audioContextRef.current) {
       const ctx = audioContextRef.current;
       try {
@@ -81,47 +82,66 @@ export default function MusicPlayer({ isPlaying, setIsPlaying, autoStartTrigger 
     }
   }, []);
 
-  // Handle Play/Pause
+  // Enforce Loop Window (1:00 to 1:40)
+  const handleTimeUpdate = () => {
+    if (audioRef.current) {
+      const curr = audioRef.current.currentTime;
+      if (curr >= LOOP_END_SEC || curr < LOOP_START_SEC) {
+        audioRef.current.currentTime = LOOP_START_SEC;
+      }
+    }
+  };
+
+  // Play audio strictly starting at 1:00 timestamp
+  const playAudioTrack = useCallback(() => {
+    if (audioRef.current) {
+      if (audioRef.current.currentTime < LOOP_START_SEC || audioRef.current.currentTime >= LOOP_END_SEC) {
+        audioRef.current.currentTime = LOOP_START_SEC;
+      }
+      audioRef.current.play().catch(() => {
+        startNasheedSynthPad();
+      });
+    } else {
+      startNasheedSynthPad();
+    }
+  }, [startNasheedSynthPad]);
+
+  // Handle Manual Play/Pause Button
   const togglePlay = () => {
     if (isPlaying) {
       setIsPlaying(false);
       if (audioRef.current && !audioRef.current.paused) {
         audioRef.current.pause();
       }
-      stopSynthPad();
+      stopNasheedSynthPad();
     } else {
       setIsPlaying(true);
-      startSynthPad();
-      if (audioRef.current) {
-        audioRef.current.play().catch(() => {
-          // Fallback handled by Web Audio Synth
-        });
-      }
+      playAudioTrack();
     }
   };
 
-  // Trigger when user taps "Tap to open"
+  // Trigger when user taps "OPEN" on the envelope cover
   useEffect(() => {
     if (autoStartTrigger) {
       setIsPlaying(true);
-      startSynthPad();
-      if (audioRef.current) {
-        audioRef.current.play().catch(() => {
-          // Web Audio Synth active
-        });
-      }
+      playAudioTrack();
     }
-  }, [autoStartTrigger, setIsPlaying, startSynthPad]);
+  }, [autoStartTrigger, setIsPlaying, playAudioTrack]);
 
   return (
     <>
-      {/* High Quality Public Soothing Audio Stream */}
+      {/* Maher Zain - Baraka Allahu Lakuma (Looped strictly 1:00 to 1:40) */}
       <audio
         ref={audioRef}
-        loop
         preload="auto"
-        src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=soothing-flute-ambient-112349.mp3"
+        src="/nasheed.mp3"
+        onTimeUpdate={handleTimeUpdate}
         onCanPlay={() => setAudioLoaded(true)}
+        onError={() => {
+          if (audioRef.current) {
+            audioRef.current.src = 'https://archive.org/download/Maher_Zean_www.suratmp3.com/Baraka_Allahu_Lakuma.mp3';
+          }
+        }}
       />
 
       {/* Floating Sound Toggle Button */}
@@ -130,7 +150,7 @@ export default function MusicPlayer({ isPlaying, setIsPlaying, autoStartTrigger 
           type="button"
           onClick={togglePlay}
           className="group relative flex h-13 w-13 items-center justify-center rounded-full border border-[#d4af37]/60 bg-[#1e1812]/80 text-[#dfc48c] shadow-2xl backdrop-blur-md transition-all duration-300 hover:scale-105 hover:border-[#f3e5ab] hover:text-[#fff] focus:outline-none focus:ring-2 focus:ring-[#d4af37]"
-          aria-label={isPlaying ? 'Mute soothing background music' : 'Play soothing background music'}
+          aria-label={isPlaying ? 'Mute Baraka Allahu Lakuma Nasheed' : 'Play Baraka Allahu Lakuma Nasheed'}
         >
           {isPlaying && (
             <span className="absolute inset-0 animate-ping rounded-full border border-[#d4af37]/40 opacity-75" />
@@ -151,7 +171,7 @@ export default function MusicPlayer({ isPlaying, setIsPlaying, autoStartTrigger 
 
           {/* Tooltip */}
           <span className="pointer-events-none absolute right-15 whitespace-nowrap rounded-md border border-[#d4af37]/30 bg-[#1e1812]/90 px-3 py-1.5 font-sans-clean text-xs font-light text-[#f5e6ca] opacity-0 shadow-lg transition-opacity duration-300 group-hover:opacity-100">
-            {isPlaying ? 'Mute Audio' : 'Play Music'}
+            {isPlaying ? 'Mute Nasheed' : 'Play (1:00 - 1:40 Loop)'}
           </span>
         </button>
       </div>

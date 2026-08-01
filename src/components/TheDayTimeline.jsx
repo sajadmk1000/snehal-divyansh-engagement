@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Camera, Utensils, GlassWater, Music, Heart } from 'lucide-react';
+import { Camera, Utensils, GlassWater, Music, Heart, MapPin } from 'lucide-react';
 
 export default function TheDayTimeline() {
   const scheduleEvents = [
@@ -11,6 +11,7 @@ export default function TheDayTimeline() {
       desc: 'The sacred solemnization of marriage binding two souls in eternal grace & blessings.',
       icon: Heart,
     },
+    /*
     {
       time: '12:00 PM',
       title: 'WELCOME REFRESHMENTS',
@@ -25,6 +26,7 @@ export default function TheDayTimeline() {
       desc: 'Relish traditional Malabar wedding delicacies and feast together in celebration.',
       icon: Utensils,
     },
+    */
     {
       time: '03:00 PM',
       title: 'PHOTO SESSION',
@@ -44,7 +46,7 @@ export default function TheDayTimeline() {
   return (
     <section className="relative py-20 sm:py-24 px-3 sm:px-6 bg-[#0a0908] overflow-hidden">
       <div className="relative z-10 mx-auto max-w-3xl">
-        {/* Header Title (SS3 Style Script Title) */}
+        {/* Header Title (SS3 / tp7.html Style Script Title) */}
         <div className="text-center mb-16 relative">
           <motion.p
             initial={{ opacity: 0, y: 10 }}
@@ -59,11 +61,11 @@ export default function TheDayTimeline() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="font-script mt-2 text-5xl sm:text-7xl text-[#f5d77f] drop-shadow-md pr-0 sm:pr-12"
+            className="font-script mt-2 text-5xl sm:text-7xl text-[#f5d77f] drop-shadow-md"
           >
             the day
           </motion.h2>
-          <div className="mt-4 flex justify-center pr-0 sm:pr-12">
+          <div className="mt-4 flex justify-center">
             <span className="gold-rule-dark h-px w-32" />
           </div>
         </div>
@@ -108,6 +110,19 @@ export default function TheDayTimeline() {
                     <p className="eyebrow-dark mt-3 text-[0.65rem] sm:text-[0.7rem] text-[#857a6b]">
                       📍 {evt.location}
                     </p>
+
+                    {/* LOCATION Action Button */}
+                    <div className="mt-4 pt-3 border-t border-[#d4af37]/15">
+                      <a
+                        href="https://maps.google.com/?q=Madavoor+Palace+Auditorium+Narikkuni+Kozhikode"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 rounded-xl border border-[#d4af37]/40 bg-[#141210] px-4 py-2 text-xs font-medium uppercase tracking-widest text-[#f5d77f] transition-all hover:bg-[#d4af37] hover:text-[#141210]"
+                      >
+                        <MapPin className="h-3.5 w-3.5" />
+                        LOCATION
+                      </a>
+                    </div>
                   </div>
                 </motion.div>
               );

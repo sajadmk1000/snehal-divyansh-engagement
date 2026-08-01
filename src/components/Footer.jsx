@@ -1,11 +1,7 @@
 import React from 'react';
-import { ArrowUp, Heart } from 'lucide-react';
+import { Heart } from 'lucide-react';
 
 export default function Footer() {
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
   return (
     <footer className="relative border-t border-[#d4af37]/30 bg-[#070605] py-20 px-4 sm:px-6 text-center text-[#c2b5a1]">
       <div className="relative z-10 mx-auto max-w-2xl flex flex-col items-center">
@@ -46,18 +42,6 @@ export default function Footer() {
           <br />
           Madavoor Palace Auditorium, Narikkuni, Kozhikode
         </p>
-
-        {/* Scroll To Top Button */}
-        <div className="mt-10">
-          <button
-            type="button"
-            onClick={scrollToTop}
-            className="inline-flex items-center gap-2 rounded-full border border-[#d4af37]/40 bg-[#141210] px-5 py-2.5 font-sans-clean text-xs font-medium text-[#f5d77f] shadow-md transition-all hover:border-[#d4af37] hover:bg-[#1a1714] active:scale-95"
-          >
-            <ArrowUp className="h-3.5 w-3.5" />
-            Back to Top
-          </button>
-        </div>
       </div>
     </footer>
   );
