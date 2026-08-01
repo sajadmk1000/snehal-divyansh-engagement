@@ -1,0 +1,135 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-dark: #0a0908;
+    --bg-dark-surface: #141210;
+    --bg-dark-card: rgba(22, 20, 17, 0.82);
+    --gold-primary: #d4af37;
+    --gold-bright: #f5d77f;
+    --gold-muted: #ab924b;
+    --text-primary: #f7f3eb;
+    --text-secondary: #c2b5a1;
+    --text-muted: #857a6b;
+    --border-gold: rgba(212, 175, 55, 0.3);
+    --border-gold-glow: rgba(212, 175, 55, 0.6);
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Jost', sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-primary);
+    overflow-x: hidden;
+    line-height: 1.7;
+    letter-spacing: 0.02em;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+/* Custom Typography Utilities */
+.font-arabic {
+  font-family: 'Amiri', serif;
+}
+
+.font-display {
+  font-family: 'Cormorant Garamond', serif;
+}
+
+.font-script {
+  font-family: 'Great Vibes', 'Parisienne', cursive;
+}
+
+.font-sans-clean {
+  font-family: 'Jost', sans-serif;
+}
+
+/* Professional Line Heights & Letter Spacing */
+.leading-luxury-heading {
+  line-height: 1.15;
+  letter-spacing: 0.03em;
+}
+
+.leading-luxury-body {
+  line-height: 1.8;
+  letter-spacing: 0.04em;
+}
+
+.tracking-eyebrow {
+  letter-spacing: 0.35em;
+}
+
+/* Dark Luxury Glow & Glassmorphism */
+.text-gold-glow {
+  color: #f5d77f;
+  text-shadow: 0 0 20px rgba(212, 175, 55, 0.45), 0 0 40px rgba(212, 175, 55, 0.2);
+}
+
+.text-subtle-glow {
+  text-shadow: 0 2px 15px rgba(247, 243, 235, 0.2);
+}
+
+.gold-gradient-text {
+  background: linear-gradient(135deg, #f5d77f 0%, #d4af37 50%, #ab924b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gold-rule-dark {
+  background: linear-gradient(90deg, transparent 0%, rgba(212, 175, 55, 0.6) 50%, transparent 100%);
+}
+
+.glass-card-dark {
+  background: rgba(18, 16, 14, 0.82);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(212, 175, 55, 0.28);
+  box-shadow: 0 16px 40px -12px rgba(0, 0, 0, 0.7), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+}
+
+.glass-card-dark-gold {
+  background: linear-gradient(145deg, rgba(28, 24, 20, 0.9) 0%, rgba(14, 12, 10, 0.95) 100%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.8), 0 0 20px rgba(212, 175, 55, 0.1);
+}
+
+.eyebrow-dark {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0.35em;
+  color: var(--gold-primary);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0908;
+}
+::-webkit-scrollbar-thumb {
+  background: #ab924b;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #d4af37;
+}
+
+/* Envelope Flap Wax Seal Keyframes */
+@keyframes wax-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.6), 0 8px 25px rgba(0, 0, 0, 0.6);
+  }
+  50% {
+    box-shadow: 0 0 0 14px rgba(212, 175, 55, 0), 0 12px 35px rgba(0, 0, 0, 0.8);
+  }
+}
+
+.animate-wax-pulse {
+  animation: wax-pulse 2.5s ease-in-out infinite;
+}
