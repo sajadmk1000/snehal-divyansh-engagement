@@ -15,16 +15,16 @@ export const Envelope = ({ onOpen }) => {
   const handleOpen = () => {
     if (isOpen) return;
 
-    // Start envelope animation matching hani project (4.5s)
+    // Start horizontal envelope opening animation
     setIsOpen(true);
 
     // Call parent immediately to reveal HeroSection & start audio
     onOpen();
 
-    // Unmount component after 4.7s matching hani project
+    // Unmount component after 10s animation completes
     setTimeout(() => {
       setIsRemoved(true);
-    }, 4700);
+    }, 10000);
   };
 
   if (isRemoved) {
@@ -41,12 +41,12 @@ export const Envelope = ({ onOpen }) => {
           exit={{ opacity: 0 }}
           transition={{ duration: 0.6, ease: 'easeInOut' }}
         >
-          {/* Dark Luxury Blur Backdrop (Matching hani timing: 1.5s, ease: [0.16, 1, 0.3, 1]) */}
+          {/* Dark Luxury Blur Backdrop (Fades out FAST 0.6s on tap) */}
           <motion.div
             className="absolute inset-0 bg-[#090807]/90 backdrop-blur-md z-0"
             initial={{ opacity: 1 }}
             animate={isOpen ? { opacity: 0 } : { opacity: 1 }}
-            transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.6, ease: 'easeOut' }}
           />
 
           {/* ENVELOPE FRAME CONTAINER - Transparent Wrapper */}
@@ -54,12 +54,12 @@ export const Envelope = ({ onOpen }) => {
             className="relative w-full sm:max-w-[430px] sm:h-[92dvh] sm:max-h-[860px] sm:rounded-2xl overflow-hidden bg-transparent flex flex-col justify-between z-10"
             style={{ height: '100dvh', maxWidth: 'min(430px, 48dvh)', containerType: 'inline-size' }}
           >
-            {/* BACKGROUND PAPER TEXTURE LAYER (Matching hani timing: 4.5s) */}
+            {/* ENVELOPE BACKGROUND PAPER (Fades out FAST 0.6s on tap to reveal HeroSection underneath) */}
             <motion.div
               className="absolute inset-0 w-full h-full z-0 pointer-events-none"
-              initial={{ x: 0, opacity: 1 }}
-              animate={isOpen ? { x: '250%', opacity: 0 } : { x: 0, opacity: 1 }}
-              transition={{ duration: 4.5, ease: [0.16, 1, 0.3, 1] }}
+              initial={{ opacity: 1 }}
+              animate={isOpen ? { opacity: 0 } : { opacity: 1 }}
+              transition={{ duration: 0.6, ease: 'easeOut' }}
             >
               <img
                 src="/images/envelope/envelope_bg_paper.png"
@@ -72,15 +72,18 @@ export const Envelope = ({ onOpen }) => {
             <motion.div 
               className="absolute inset-0 bg-black/10 pointer-events-none z-30"
               animate={isOpen ? { opacity: 0 } : { opacity: 1 }}
-              transition={{ duration: 1.2 }}
+              transition={{ duration: 0.6 }}
             />
 
-            {/* LEFT FLAP (UNDERNEATH, z-10) - Matching hani timing: 4.5s */}
+            {/* LEFT FLAP ENVELOPE (UNDERNEATH, z-10) - Slides to left over 9.5s, 100% solid, fades ONLY at side end */}
             <motion.div
               className="absolute top-0 left-0 h-full z-10 pointer-events-none flex items-center justify-start"
               initial={{ x: 0, opacity: 1 }}
-              animate={isOpen ? { x: '-250%', opacity: 0 } : { x: 0, opacity: 1 }}
-              transition={{ duration: 4.5, ease: [0.16, 1, 0.3, 1] }}
+              animate={isOpen ? { x: '-250%', opacity: [1, 1, 0] } : { x: 0, opacity: 1 }}
+              transition={{ 
+                x: { duration: 9.5, ease: [0.16, 1, 0.3, 1] },
+                opacity: { duration: 9.5, times: [0, 0.88, 1.0], ease: 'linear' }
+              }}
             >
               <img
                 src="/images/envelope/envelope_flap_left.png"
@@ -102,12 +105,15 @@ export const Envelope = ({ onOpen }) => {
               </div>
             </motion.div>
 
-            {/* RIGHT FLAP (ON TOP, z-20) WITH AM GOLD WAX SEAL - Matching hani timing: 4.5s */}
+            {/* RIGHT FLAP ENVELOPE (ON TOP, z-20) WITH WAX SEAL - Slides to right over 9.5s, 100% solid, fades ONLY at side end */}
             <motion.div
               className="absolute top-0 right-0 h-full z-20 pointer-events-none flex items-center justify-end"
               initial={{ x: 0, opacity: 1 }}
-              animate={isOpen ? { x: '250%', opacity: 0 } : { x: 0, opacity: 1 }}
-              transition={{ duration: 4.5, ease: [0.16, 1, 0.3, 1] }}
+              animate={isOpen ? { x: '250%', opacity: [1, 1, 0] } : { x: 0, opacity: 1 }}
+              transition={{ 
+                x: { duration: 9.5, ease: [0.16, 1, 0.3, 1] },
+                opacity: { duration: 9.5, times: [0, 0.88, 1.0], ease: 'linear' }
+              }}
             >
               <img
                 src="/images/envelope/envelope_flap_right.png"
