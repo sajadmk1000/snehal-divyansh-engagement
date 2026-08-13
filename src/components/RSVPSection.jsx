@@ -28,7 +28,7 @@ export const RSVPSection = () => {
 
     const attendanceText = formData.attending === 'yes' ? 'Joyfully Accept' : 'Regretfully Decline';
     const messageText = `Assalamu Alaikum! I would like to confirm my RSVP for the Nikah Ceremony of Amal Ameen & Minsha:\n\n*Guest Name:* ${formData.name}\n*Number of Guests:* ${formData.guests}\n*Attendance:* ${attendanceText}`;
-    const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(messageText)}`;
+    const whatsappUrl = `https://wa.me/919496635847?text=${encodeURIComponent(messageText)}`;
     
     window.open(whatsappUrl, '_blank');
   };
