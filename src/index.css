@@ -133,3 +133,56 @@
 .animate-wax-pulse {
   animation: wax-pulse 2.5s ease-in-out infinite;
 }
+
+/* Explicit font family definitions */
+.font-abhaya {
+  font-family: 'Abhaya Libre', serif !important;
+}
+
+.font-cormorant {
+  font-family: 'Cormorant Infant', 'Cormorant Garamond', serif !important;
+}
+
+.font-playfair {
+  font-family: 'Playfair Display', serif !important;
+}
+
+.font-vibes {
+  font-family: 'Great Vibes', cursive !important;
+}
+
+/* Falling leaves and floating dust animations */
+@keyframes petal-fall {
+  0% {
+    transform: translateY(-10vh) rotate(0deg) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.65;
+  }
+  90% {
+    opacity: 0.65;
+  }
+  100% {
+    transform: translateY(110vh) rotate(720deg) translateX(var(--drift, 0px));
+    opacity: 0;
+  }
+}
+
+@keyframes dust-float {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: var(--max-op, 0.5);
+  }
+  90% {
+    opacity: var(--max-op, 0.5);
+  }
+  100% {
+    transform: translateY(-120vh) translateX(var(--dx, 0px));
+    opacity: 0;
+  }
+}
+

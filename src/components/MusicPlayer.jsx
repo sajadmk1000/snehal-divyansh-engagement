@@ -8,10 +8,6 @@ export default function MusicPlayer({ isPlaying, setIsPlaying, autoStartTrigger 
   const gainNodeRef = useRef(null);
   const audioRef = useRef(null);
 
-  // Exact Loop Window: 1:00 (60 seconds) to 1:40 (100 seconds)
-  const LOOP_START_SEC = 60;
-  const LOOP_END_SEC = 100;
-
   // Initialize Web Audio Synth Fallback with Oriental Maqam Hijaz/Bayati Harmonics
   const startNasheedSynthPad = useCallback(() => {
     try {
@@ -82,23 +78,9 @@ export default function MusicPlayer({ isPlaying, setIsPlaying, autoStartTrigger 
     }
   }, []);
 
-  // Enforce Loop Window (1:00 to 1:40)
-  const handleTimeUpdate = () => {
-    if (audioRef.current) {
-      const curr = audioRef.current.currentTime;
-      if (curr >= LOOP_END_SEC || curr < LOOP_START_SEC) {
-        audioRef.current.currentTime = LOOP_START_SEC;
-      }
-    }
-  };
-
-  // Play audio strictly starting at 1:00 timestamp
+  // Play audio track starting from the beginning (0:00)
   const playAudioTrack = useCallback(() => {
     if (audioRef.current) {
-      if (audioRef.current.currentTime < LOOP_START_SEC || audioRef.current.currentTime >= LOOP_END_SEC) {
-        audioRef.current.currentTime = LOOP_START_SEC;
-      }
-
       const promise = audioRef.current.play();
       if (promise !== undefined) {
         promise
@@ -129,7 +111,7 @@ export default function MusicPlayer({ isPlaying, setIsPlaying, autoStartTrigger 
     }
   };
 
-  // Trigger when user taps "OPEN" on the envelope cover
+  // Trigger audio when user opens the envelope
   useEffect(() => {
     if (autoStartTrigger) {
       setIsPlaying(true);
@@ -139,12 +121,12 @@ export default function MusicPlayer({ isPlaying, setIsPlaying, autoStartTrigger 
 
   return (
     <>
-      {/* Maher Zain - Baraka Allahu Lakuma (Looped strictly 1:00 to 1:40) */}
+      {/* Background Nasheed Audio Track (Plays from the start 0:00) */}
       <audio
         ref={audioRef}
         preload="auto"
+        loop
         src="/nasheed.mp3"
-        onTimeUpdate={handleTimeUpdate}
         onCanPlay={() => setAudioLoaded(true)}
         onError={() => {
           if (audioRef.current) {
@@ -159,7 +141,7 @@ export default function MusicPlayer({ isPlaying, setIsPlaying, autoStartTrigger 
           type="button"
           onClick={togglePlay}
           className="group relative flex h-13 w-13 items-center justify-center rounded-full border border-[#d4af37]/60 bg-[#1e1812]/80 text-[#dfc48c] shadow-2xl backdrop-blur-md transition-all duration-300 hover:scale-105 hover:border-[#f3e5ab] hover:text-[#fff] focus:outline-none focus:ring-2 focus:ring-[#d4af37]"
-          aria-label={isPlaying ? 'Mute Baraka Allahu Lakuma Nasheed' : 'Play Baraka Allahu Lakuma Nasheed'}
+          aria-label={isPlaying ? 'Mute Background Audio' : 'Play Background Audio'}
         >
           {isPlaying && (
             <span className="absolute inset-0 animate-ping rounded-full border border-[#d4af37]/40 opacity-75" />
@@ -180,7 +162,7 @@ export default function MusicPlayer({ isPlaying, setIsPlaying, autoStartTrigger 
 
           {/* Tooltip */}
           <span className="pointer-events-none absolute right-15 whitespace-nowrap rounded-md border border-[#d4af37]/30 bg-[#1e1812]/90 px-3 py-1.5 font-sans-clean text-xs font-light text-[#f5e6ca] opacity-0 shadow-lg transition-opacity duration-300 group-hover:opacity-100">
-            {isPlaying ? 'Mute Nasheed' : 'Play (1:00 - 1:40 Loop)'}
+            {isPlaying ? 'Mute Audio' : 'Play Audio'}
           </span>
         </button>
       </div>

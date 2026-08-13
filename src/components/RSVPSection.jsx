@@ -1,179 +1,228 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import confetti from 'canvas-confetti';
-import { CheckCircle2, Heart, Sparkles, UserCheck } from 'lucide-react';
 
-export default function RSVPSection() {
+export const RSVPSection = () => {
   const [formData, setFormData] = useState({
     name: '',
-    status: 'attending',
     guests: '1',
+    attending: ''
   });
-
   const [submitted, setSubmitted] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    // Golden confetti celebration
-    confetti({
-      particleCount: 140,
-      spread: 90,
-      origin: { y: 0.6 },
-      colors: ['#f5d77f', '#d4af37', '#ab924b', '#ffffff'],
-    });
+    if (!formData.name.trim() || !formData.attending) {
+      return;
+    }
 
     setSubmitted(true);
+
+    confetti({
+      particleCount: 90,
+      spread: 75,
+      origin: { y: 0.6 },
+      colors: ['#F5D77F', '#D4AF37', '#AB924B']
+    });
+
+    const attendanceText = formData.attending === 'yes' ? 'Joyfully Accept' : 'Regretfully Decline';
+    const messageText = `Assalamu Alaikum! I would like to confirm my RSVP for the Nikah Ceremony of Amal Ameen & Minsha:\n\n*Guest Name:* ${formData.name}\n*Number of Guests:* ${formData.guests}\n*Attendance:* ${attendanceText}`;
+    const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(messageText)}`;
+    
+    window.open(whatsappUrl, '_blank');
   };
 
   return (
-    <section className="relative py-20 sm:py-24 px-4 sm:px-6 bg-[#0a0908] overflow-hidden">
-      <div className="relative z-10 mx-auto max-w-xl">
+    <section 
+      id="rsvp"
+      className="relative w-full py-14 xs:py-18 sm:py-22 px-4 xs:px-6 flex flex-col items-center justify-center bg-[#0a0908] overflow-hidden"
+    >
+      <div className="w-full max-w-[360px] xs:max-w-[380px] sm:max-w-[400px] md:max-w-[460px] flex flex-col items-center text-center">
+        
+        {/* Star Line Top Divider SVG */}
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="flex items-center justify-center gap-3 w-full max-w-[260px] mb-6 xs:mb-7"
+        >
+          <div className="flex-1 h-[1px] bg-gradient-to-r from-transparent via-[#d4af37]/60 to-[#d4af37]/60" />
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-[#f5d77f] shrink-0">
+            <path d="M12 2L13.8 10.2L22 12L13.8 13.8L12 22L10.2 13.8L2 12L10.2 10.2L12 2Z" stroke="#f5d77f" strokeWidth="1.2" fill="none"/>
+          </svg>
+          <div className="flex-1 h-[1px] bg-gradient-to-l from-transparent via-[#d4af37]/60 to-[#d4af37]/60" />
+        </motion.div>
+ 
         {/* Section Header */}
-        <div className="text-center mb-10">
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="eyebrow-dark text-[#d4af37]"
-          >
-            CONFIRMATION &amp; BLESSINGS
-          </motion.p>
-
-          <motion.h2
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="font-script mt-2 text-5xl sm:text-7xl text-[#f7f3eb] drop-shadow-md"
-          >
-            Will You Join Us?
-          </motion.h2>
-
-          <p className="font-display mt-2 text-base font-light italic text-[#c2b5a1]">
-            Let us know so we can celebrate together
-          </p>
-
-          <div className="mt-4 flex justify-center">
-            <span className="gold-rule-dark h-px w-28" />
-          </div>
-        </div>
-
-        {/* Simple Native RSVP Card matching tp7.html */}
-        <motion.div
-          initial={{ opacity: 0, y: 25 }}
+        <motion.div 
+          initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="glass-card-dark rounded-3xl p-6 sm:p-10 border border-[#d4af37]/35 shadow-2xl relative"
+          transition={{ duration: 0.7, delay: 0.1 }}
+          className="flex flex-col items-center w-full mb-7 xs:mb-8"
         >
-          {submitted ? (
-            <div className="py-8 text-center space-y-4">
-              <div className="inline-flex h-16 w-16 items-center justify-center rounded-full bg-[#d4af37]/20 border border-[#d4af37] text-[#f5d77f] mb-2 animate-bounce">
-                <CheckCircle2 className="h-8 w-8" />
+          <span 
+            className="font-sans-clean font-normal text-[11px] xs:text-[12px] text-[#d4af37] uppercase tracking-[0.2em] whitespace-nowrap mb-2"
+          >
+            ATTENDANCE CONFIRMATION
+          </span>
+ 
+          <h2 className="font-vibes font-normal text-[48px] xs:text-[54px] sm:text-[58px] text-[#f5d77f] leading-[1.08] select-none mb-3 xs:mb-4 drop-shadow-md">
+            Kindly RSVP
+          </h2>
+ 
+          <p className="font-cormorant font-normal text-[clamp(14px,4.3vw,17px)] text-[#c2b5a1] w-full max-w-[340px] md:max-w-md leading-[1.5] text-center">
+            We look forward to celebrating this blessed day with you. Please confirm your attendance below.
+          </p>
+        </motion.div>
+ 
+        {/* RSVP Form */}
+        {submitted ? (
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="w-full max-w-[320px] p-6 rounded-[24px] bg-[#16120e] border border-[#d4af37]/40 flex flex-col items-center gap-3 text-center my-2 shadow-2xl"
+          >
+            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#f5d77f] to-[#d4af37] text-[#0a0908] flex items-center justify-center text-xl font-bold shadow-md">
+              ✓
+            </div>
+            <h3 className="font-vibes text-3xl text-[#f5d77f]">JazakAllah Khair!</h3>
+            <p className="font-cormorant text-base text-[#f7f3eb]">
+              Your response has been submitted. We look forward to seeing you!
+            </p>
+          </motion.div>
+        ) : (
+          <motion.form 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            onSubmit={handleSubmit}
+            className="w-full max-w-[315px] xs:max-w-[330px] md:max-w-[420px] flex flex-col gap-4 xs:gap-5 text-left"
+          >
+            {/* Field 1: Guest Name */}
+            <div className="flex flex-col gap-1.5 w-full">
+              <label className="font-sans-clean text-[11.5px] xs:text-[12px] font-normal text-[#d4af37] tracking-wider uppercase">
+                Guest Name
+              </label>
+              <input 
+                type="text"
+                required
+                placeholder="Enter your name"
+                value={formData.name}
+                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                className="w-full h-[48px] xs:h-[50px] rounded-[18px] px-4 font-sans-clean text-[13px] text-[#f7f3eb] placeholder:text-[#857a6b] border border-[#d4af37]/35 bg-[#14100c] outline-none focus:border-[#f5d77f] transition-colors"
+              />
+            </div>
+
+            {/* Field 2: Number of guests */}
+            <div className="flex flex-col gap-1.5 w-full relative">
+              <label className="font-sans-clean text-[11.5px] xs:text-[12px] font-normal text-[#d4af37] tracking-wider uppercase">
+                Number of Guests
+              </label>
+              
+              <div 
+                onClick={() => setDropdownOpen(!dropdownOpen)}
+                className={`w-full h-[48px] xs:h-[50px] rounded-[18px] px-4 font-sans-clean text-[13px] text-[#f7f3eb] border bg-[#14100c] flex items-center justify-between cursor-pointer select-none transition-colors ${
+                  dropdownOpen ? 'border-[#f5d77f]' : 'border-[#d4af37]/35'
+                }`}
+              >
+                <span>{formData.guests} {Number(formData.guests) === 1 ? 'Guest' : 'Guests'}</span>
+                <svg 
+                  className={`w-4 h-4 text-[#d4af37] transition-transform duration-200 ${dropdownOpen ? 'rotate-180' : ''}`}
+                  fill="none" 
+                  viewBox="0 0 24 24" 
+                  stroke="currentColor" 
+                  strokeWidth="1.8"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                </svg>
               </div>
 
-              <h3 className="font-display text-3xl font-normal text-[#f7f3eb]">
-                Thank You, {formData.name || 'Dear Guest'}!
-              </h3>
+              {dropdownOpen && (
+                <>
+                  <div 
+                    className="fixed inset-0 z-10 cursor-default" 
+                    onClick={() => setDropdownOpen(false)}
+                  />
+                  
+                  <div className="absolute top-[calc(100%+4px)] left-0 w-full bg-[#14100c] border border-[#d4af37]/40 rounded-[18px] py-1.5 shadow-2xl z-20 max-h-[200px] overflow-y-auto">
+                    {[1, 2, 3, 4, 5, 6, 7, 8].map(num => (
+                      <div
+                        key={num}
+                        onClick={() => {
+                          setFormData({ ...formData, guests: String(num) });
+                          setDropdownOpen(false);
+                        }}
+                        className={`px-4 py-2.5 text-[13px] font-sans-clean text-[#f7f3eb] cursor-pointer transition-colors ${
+                          formData.guests === String(num)
+                            ? 'bg-[#d4af37] text-[#0a0908] font-semibold'
+                            : 'hover:bg-[#d4af37]/20 hover:text-[#f5d77f]'
+                        }`}
+                      >
+                        {num} {num === 1 ? 'Guest' : 'Guests'}
+                      </div>
+                    ))}
+                  </div>
+                </>
+              )}
+            </div>
 
-              <p className="font-sans-clean text-sm text-[#c2b5a1] max-w-md mx-auto leading-luxury-body">
-                {formData.status === 'attending'
-                  ? 'Your response has been saved. We look forward to celebrating together with you!'
-                  : 'Your response has been saved. We will miss your presence and appreciate your prayers.'}
-              </p>
-
-              <div className="pt-4">
+            {/* Field 3: Will you attend? */}
+            <div className="flex flex-col gap-1.5 w-full">
+              <label className="font-sans-clean text-[11.5px] xs:text-[12px] font-normal text-[#d4af37] tracking-wider uppercase">
+                Will you attend?
+              </label>
+              <div className="grid grid-cols-2 gap-3 w-full">
                 <button
                   type="button"
-                  onClick={() => setSubmitted(false)}
-                  className="inline-flex items-center justify-center gap-2 rounded-2xl border border-[#d4af37]/40 bg-[#141210] px-6 py-3 font-medium text-[#c2b5a1] hover:border-[#d4af37] hover:text-[#f7f3eb]"
+                  onClick={() => setFormData({ ...formData, attending: 'yes' })}
+                  className={`h-[48px] xs:h-[50px] rounded-[18px] font-sans-clean text-[12.5px] xs:text-[13px] font-medium transition-all cursor-pointer border ${
+                    formData.attending === 'yes'
+                      ? 'bg-gradient-to-r from-[#d4af37] to-[#f5d77f] text-[#0a0908] border-transparent font-semibold shadow-md'
+                      : 'bg-[#14100c] border-[#d4af37]/35 text-[#f7f3eb] hover:border-[#d4af37]'
+                  }`}
                 >
-                  Edit Response
+                  Joyfully accept
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => setFormData({ ...formData, attending: 'no' })}
+                  className={`h-[48px] xs:h-[50px] rounded-[18px] font-sans-clean text-[12.5px] xs:text-[13px] font-medium transition-all cursor-pointer border ${
+                    formData.attending === 'no'
+                      ? 'bg-gradient-to-r from-[#d4af37] to-[#f5d77f] text-[#0a0908] border-transparent font-semibold shadow-md'
+                      : 'bg-[#14100c] border-[#d4af37]/35 text-[#f7f3eb] hover:border-[#d4af37]'
+                  }`}
+                >
+                  Regretfully decline
                 </button>
               </div>
             </div>
-          ) : (
-            <form onSubmit={handleSubmit} className="space-y-6">
-              {/* Full Name Input */}
-              <div>
-                <label className="block text-xs font-medium uppercase tracking-wider text-[#d4af37] mb-2">
-                  Your Full Name
-                </label>
-                <input
-                  type="text"
-                  required
-                  placeholder="Enter your full name"
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full rounded-xl border border-[#d4af37]/35 bg-[#141210] px-4 py-3.5 text-sm text-[#f7f3eb] placeholder-[#857a6b] focus:border-[#f5d77f] focus:outline-none focus:ring-1 focus:ring-[#f5d77f]"
-                />
-              </div>
 
-              {/* Attendance Selection Buttons (Matching tp7.html) */}
-              <div>
-                <label className="block text-xs font-medium uppercase tracking-wider text-[#d4af37] mb-2">
-                  Attendance
-                </label>
-                <div className="grid grid-cols-2 gap-3 sm:gap-4">
-                  <button
-                    type="button"
-                    onClick={() => setFormData({ ...formData, status: 'attending' })}
-                    className={`flex items-center justify-center gap-2 rounded-xl border p-3.5 text-xs sm:text-sm font-medium uppercase tracking-wider transition-all ${
-                      formData.status === 'attending'
-                        ? 'border-[#f5d77f] bg-[#d4af37] text-[#141210] font-bold shadow-md'
-                        : 'border-[#d4af37]/30 bg-[#141210] text-[#c2b5a1]'
-                    }`}
-                  >
-                    <Heart className={`h-4 w-4 ${formData.status === 'attending' ? 'fill-[#141210] text-[#141210]' : ''}`} />
-                    Joyfully Attend
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={() => setFormData({ ...formData, status: 'declined' })}
-                    className={`flex items-center justify-center gap-2 rounded-xl border p-3.5 text-xs sm:text-sm font-medium uppercase tracking-wider transition-all ${
-                      formData.status === 'declined'
-                        ? 'border-[#f5d77f] bg-[#d4af37] text-[#141210] font-bold shadow-md'
-                        : 'border-[#d4af37]/30 bg-[#141210] text-[#c2b5a1]'
-                    }`}
-                  >
-                    Regretfully Decline
-                  </button>
-                </div>
-              </div>
-
-              {/* Guest Count Selection Ticker */}
-              {formData.status === 'attending' && (
-                <div>
-                  <label className="block text-xs font-medium uppercase tracking-wider text-[#d4af37] mb-2">
-                    Number of Attendees
-                  </label>
-                  <select
-                    value={formData.guests}
-                    onChange={(e) => setFormData({ ...formData, guests: e.target.value })}
-                    className="w-full rounded-xl border border-[#d4af37]/35 bg-[#141210] px-4 py-3.5 text-sm text-[#f7f3eb] focus:border-[#f5d77f] focus:outline-none"
-                  >
-                    <option value="1">1 Person</option>
-                    <option value="2">2 Persons</option>
-                    <option value="3">3 Persons</option>
-                    <option value="4+">4+ Family Members</option>
-                  </select>
-                </div>
-              )}
-
-              {/* Send Response Submit Button (Matching tp7.html) */}
-              <button
+            {/* Submit Button */}
+            <div className="flex justify-center mt-3 xs:mt-4">
+              <motion.button 
                 type="submit"
-                className="inline-flex w-full items-center justify-center gap-2 rounded-2xl border border-[#f5d77f] bg-gradient-to-r from-[#ab924b] via-[#d4af37] to-[#8c7336] py-4 text-xs sm:text-sm font-semibold uppercase tracking-widest text-[#141210] shadow-xl transition-all duration-300 hover:shadow-2xl active:scale-95"
+                whileHover={!formData.name.trim() || !formData.attending ? {} : { scale: 1.04 }}
+                whileTap={!formData.name.trim() || !formData.attending ? {} : { scale: 0.96 }}
+                className={`w-full max-w-[210px] h-[44px] xs:h-[46px] rounded-full font-sans-clean font-semibold text-[13.5px] tracking-[0.05em] uppercase flex items-center justify-center transition-all border-none ${
+                  !formData.name.trim() || !formData.attending
+                    ? 'bg-[#d4af37]/30 text-[#857a6b] cursor-not-allowed shadow-none'
+                    : 'bg-gradient-to-r from-[#d4af37] via-[#f5d77f] to-[#b8923f] text-[#0a0908] shadow-[0_6px_20px_rgba(212,175,55,0.35)] cursor-pointer'
+                }`}
+                disabled={!formData.name.trim() || !formData.attending}
               >
-                <UserCheck className="h-4 w-4" />
-                SEND RESPONSE
-              </button>
-            </form>
-          )}
-        </motion.div>
+                <span>Confirm RSVP</span>
+              </motion.button>
+            </div>
+          </motion.form>
+        )}
       </div>
     </section>
   );
-}
+};
+
+export default RSVPSection;

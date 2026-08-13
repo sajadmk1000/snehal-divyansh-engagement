@@ -1,74 +1,75 @@
-import React, { useState } from 'react';
-import EnvelopeEntry from './components/EnvelopeEntry';
-// import FloatingRings from './components/FloatingRings';
+import React, { useState, useEffect } from 'react';
+import Envelope from './components/Envelope';
+import FallingLeaves from './components/FallingLeaves';
 import MusicPlayer from './components/MusicPlayer';
-import BackgroundParticles from './components/BackgroundParticles';
 import HeroSection from './components/HeroSection';
-import SacredBlessing from './components/SacredBlessing';
-import TheDayTimeline from './components/TheDayTimeline';
-// import AllDetails from './components/AllDetails';
-import VenueMap from './components/VenueMap';
-import CountdownTimer from './components/CountdownTimer';
-import OurFamilies from './components/OurFamilies';
+import NikkahEventSection from './components/NikkahEventSection';
+import InvitationSection from './components/InvitationSection';
+import CountdownSection from './components/CountdownSection';
 import RSVPSection from './components/RSVPSection';
-import Footer from './components/Footer';
+import FooterSection from './components/FooterSection';
 
 export default function App() {
-  const [isEnvelopeOpen, setIsEnvelopeOpen] = useState(false);
+  const [envelopeOpened, setEnvelopeOpened] = useState(false);
   const [isPlayingMusic, setIsPlayingMusic] = useState(false);
   const [autoStartAudioTrigger, setAutoStartAudioTrigger] = useState(false);
 
-  const handleOpenEnvelope = () => {
-    setIsEnvelopeOpen(true);
+  /*
+   * Lock scrolling until user opens the envelope
+   */
+  useEffect(() => {
+    if (!envelopeOpened) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [envelopeOpened]);
+
+  const handleEnvelopeOpen = () => {
+    setEnvelopeOpened(true);
     setAutoStartAudioTrigger(true);
   };
 
   return (
-    <div className="relative min-h-screen bg-[#0a0908] text-[#f7f3eb] font-sans-clean overflow-x-hidden selection:bg-[#d4af37]/40 selection:text-[#fff]">
-      {/* Background Stardust Particles */}
-      <BackgroundParticles />
+    <div className="relative min-h-screen bg-[#0a0908] text-[#f7f3eb] font-cormorant selection:bg-[#d4af37]/30 selection:text-[#f7f3eb] overflow-x-hidden w-full flex flex-col justify-start items-center">
+      {/* Global Falling Leaves & Dust Particles */}
+      {envelopeOpened && <FallingLeaves />}
 
-      {/* Floating 2 Intertwined Golden Rings Scroll Tracker (Commented out for now) */}
-      {/* <FloatingRings isEnvelopeOpen={isEnvelopeOpen} /> */}
+      {/* Background Audio Player with Floating Music Toggle Button */}
+      {envelopeOpened && (
+        <MusicPlayer
+          isPlaying={isPlayingMusic}
+          setIsPlaying={setIsPlayingMusic}
+          autoStartTrigger={autoStartAudioTrigger}
+        />
+      )}
 
-      {/* 3D Interactive Envelope Cover Screen with Wax Seal (tp7.html Style) */}
-      <EnvelopeEntry isOpen={isEnvelopeOpen} onOpen={handleOpenEnvelope} />
+      {/* Interactive Envelope Overlay */}
+      <Envelope onOpen={handleEnvelopeOpen} />
 
-      {/* Audio Player & Floating Sound Control Button */}
-      <MusicPlayer
-        isPlaying={isPlayingMusic}
-        setIsPlaying={setIsPlayingMusic}
-        autoStartTrigger={autoStartAudioTrigger}
-      />
-
-      {/* Main Story Flow Content (Matching Reference Site tp7.html Content Hierarchy) */}
-      <main className={`relative z-10 transition-opacity duration-1000 ${isEnvelopeOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+      {/* Main Website Flow - Pre-rendered directly in DOM for 0ms Instant Load without lag */}
+      <main className="w-full flex flex-col items-center">
         {/* Section 1: Hero Announcement */}
         <HeroSection />
 
-        {/* Section 2: Sacred Verses & Henna Hands */}
-        <SacredBlessing />
+        {/* Section 2: Save the Date & Nikkah Ceremony Card */}
+        <NikkahEventSection />
 
-        {/* Section 3: The Day Timeline Schedule */}
-        <TheDayTimeline />
+        {/* Section 3: Formal Cordial Invitation */}
+        <InvitationSection />
 
-        {/* Section 4: Essential Details (Commented out for now) */}
-        {/* <AllDetails /> */}
+        {/* Section 4: Live Countdown Ticker */}
+        <CountdownSection />
 
-        {/* Section 5: Venue Map & Directions */}
-        <VenueMap />
-
-        {/* Section 6: Live Countdown Ticker */}
-        <CountdownTimer />
-
-        {/* Section 7: Our Families */}
-        <OurFamilies />
-
-        {/* Section 8: Simple Native RSVP Confirmation */}
+        {/* Section 5: RSVP Confirmation Form */}
         <RSVPSection />
 
-        {/* Footer & Monogram Seal */}
-        <Footer />
+        {/* Section 6: Footer & Family Credits */}
+        <FooterSection />
       </main>
     </div>
   );
