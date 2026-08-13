@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 export default function HeroSection() {
   return (
-    <section className="relative flex min-h-[100dvh] w-full flex-col items-center justify-center overflow-hidden px-4 pt-6 pb-10 sm:py-16 text-center bg-[#0a0908]">
+    <section className="relative flex min-h-[100dvh] w-full flex-col items-center justify-center overflow-hidden px-4 pt-6 pb-12 sm:py-16 text-center bg-[#0a0908]">
       {/* Dark Romantic Muslim Couple Background Image */}
       <div className="absolute inset-0 z-0 overflow-hidden opacity-25">
         <img
@@ -22,13 +22,13 @@ export default function HeroSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 1 }}
-          className="flex items-center justify-center gap-3 mb-4 sm:mb-6"
+          className="flex items-center justify-center gap-3 mb-5 sm:mb-6"
         >
-          <span className="gold-rule-dark h-px w-10 xs:w-12 sm:w-24" />
-          <span className="eyebrow-dark tracking-eyebrow text-[#d4af37] text-[10px] xs:text-xs">
+          <span className="gold-rule-dark h-px w-10 xs:w-12 sm:w-20" />
+          <span className="font-sans-clean font-medium text-[11px] xs:text-xs text-[#d4af37] tracking-[0.3em] uppercase">
             WITH THE BLESSINGS OF ALLAH
           </span>
-          <span className="gold-rule-dark h-px w-10 xs:w-12 sm:w-24" />
+          <span className="gold-rule-dark h-px w-10 xs:w-12 sm:w-20" />
         </motion.div>
 
         {/* Groom & Bride Script Typography */}
@@ -37,13 +37,13 @@ export default function HeroSection() {
           whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
           viewport={{ once: true }}
           transition={{ duration: 1.2, delay: 0.2 }}
-          className="font-script flex flex-col items-center text-4xl xs:text-5xl sm:text-6xl md:text-7xl text-[#f7f3eb] text-subtle-glow leading-tight"
+          className="font-vibes flex flex-col items-center text-[52px] xs:text-[62px] sm:text-[72px] text-[#f5d77f] drop-shadow-md leading-tight"
         >
           <span className="pb-1">Amal Ameen</span>
 
           {/* Polished Gold Intertwined Rings Emblem */}
           <div className="my-2 sm:my-3 flex items-center justify-center relative">
-            <div className="absolute h-12 w-12 sm:h-18 sm:w-18 rounded-full bg-radial from-[#f5d77f]/45 via-[#d4af37]/20 to-transparent blur-lg animate-pulse" />
+            <div className="absolute h-12 w-12 sm:h-16 sm:w-16 rounded-full bg-radial from-[#f5d77f]/45 via-[#d4af37]/20 to-transparent blur-lg animate-pulse" />
             <img
               src="/gold-rings.png"
               alt="Polished Gold Wedding Rings"
@@ -60,7 +60,7 @@ export default function HeroSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 1, delay: 0.4 }}
-          className="font-display mt-5 sm:mt-8 max-w-lg text-base xs:text-lg font-light italic leading-luxury-body text-[#c2b5a1] sm:text-2xl px-2"
+          className="font-cormorant mt-6 sm:mt-8 max-w-md text-[16px] xs:text-[18px] sm:text-[20px] font-normal italic leading-[1.6] text-[#c2b5a1] px-2"
         >
           Invite you to join them in celebrating their blessed Nikah &amp; eternal union of love
         </motion.p>
@@ -71,15 +71,15 @@ export default function HeroSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 1, delay: 0.6 }}
-          className="glass-card-dark mt-6 sm:mt-8 inline-flex flex-wrap items-center justify-center gap-3 xs:gap-4 rounded-full px-6 xs:px-8 py-3 sm:py-3.5 border border-[#d4af37]/40 shadow-2xl"
+          className="glass-card-dark mt-7 sm:mt-9 inline-flex flex-wrap items-center justify-center gap-3 xs:gap-4 rounded-full px-6 xs:px-8 py-3 sm:py-3.5 border border-[#d4af37]/40 shadow-2xl"
         >
-          <span className="eyebrow-dark text-[11px] xs:text-xs text-[#f5d77f]">SATURDAY</span>
+          <span className="font-sans-clean font-medium text-[11px] xs:text-xs text-[#f5d77f] tracking-[0.2em] uppercase">SATURDAY</span>
           <span className="h-3 w-px bg-[#d4af37]/50" />
-          <span className="font-display text-lg xs:text-xl font-medium text-[#f7f3eb] text-gold-glow">
+          <span className="font-display text-base xs:text-lg font-medium text-[#f7f3eb] text-gold-glow tracking-wider">
             SEPT 05, 2026
           </span>
           <span className="h-3 w-px bg-[#d4af37]/50" />
-          <span className="eyebrow-dark text-[11px] xs:text-xs text-[#f5d77f]">AT 11:00 AM</span>
+          <span className="font-sans-clean font-medium text-[11px] xs:text-xs text-[#f5d77f] tracking-[0.2em] uppercase">AT 11:00 AM</span>
         </motion.div>
       </div>
     </section>

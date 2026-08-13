@@ -54,7 +54,7 @@ export const RSVPSection = () => {
           </svg>
           <div className="flex-1 h-[1px] bg-gradient-to-l from-transparent via-[#d4af37]/60 to-[#d4af37]/60" />
         </motion.div>
- 
+
         {/* Section Header */}
         <motion.div 
           initial={{ opacity: 0, y: 15 }}
@@ -64,20 +64,20 @@ export const RSVPSection = () => {
           className="flex flex-col items-center w-full mb-7 xs:mb-8"
         >
           <span 
-            className="font-sans-clean font-normal text-[11px] xs:text-[12px] text-[#d4af37] uppercase tracking-[0.2em] whitespace-nowrap mb-2"
+            className="font-sans-clean font-medium text-[11px] xs:text-xs text-[#d4af37] uppercase tracking-[0.3em] whitespace-nowrap mb-2"
           >
             ATTENDANCE CONFIRMATION
           </span>
- 
-          <h2 className="font-vibes font-normal text-[48px] xs:text-[54px] sm:text-[58px] text-[#f5d77f] leading-[1.08] select-none mb-3 xs:mb-4 drop-shadow-md">
+
+          <h2 className="font-vibes text-[44px] xs:text-[52px] sm:text-[58px] text-[#f5d77f] leading-tight select-none mb-3 xs:mb-4 drop-shadow-md">
             Kindly RSVP
           </h2>
- 
-          <p className="font-cormorant font-normal text-[clamp(14px,4.3vw,17px)] text-[#c2b5a1] w-full max-w-[340px] md:max-w-md leading-[1.5] text-center">
+
+          <p className="font-cormorant text-[15px] xs:text-[16px] sm:text-[17px] text-[#c2b5a1] w-full max-w-[340px] md:max-w-md leading-[1.6] text-center">
             We look forward to celebrating this blessed day with you. Please confirm your attendance below.
           </p>
         </motion.div>
- 
+
         {/* RSVP Form */}
         {submitted ? (
           <motion.div 
@@ -104,7 +104,7 @@ export const RSVPSection = () => {
           >
             {/* Field 1: Guest Name */}
             <div className="flex flex-col gap-1.5 w-full">
-              <label className="font-sans-clean text-[11.5px] xs:text-[12px] font-normal text-[#d4af37] tracking-wider uppercase">
+              <label className="font-sans-clean text-[11px] xs:text-[11.5px] font-medium text-[#d4af37] tracking-[0.15em] uppercase">
                 Guest Name
               </label>
               <input 
@@ -119,7 +119,7 @@ export const RSVPSection = () => {
 
             {/* Field 2: Number of guests */}
             <div className="flex flex-col gap-1.5 w-full relative">
-              <label className="font-sans-clean text-[11.5px] xs:text-[12px] font-normal text-[#d4af37] tracking-wider uppercase">
+              <label className="font-sans-clean text-[11px] xs:text-[11.5px] font-medium text-[#d4af37] tracking-[0.15em] uppercase">
                 Number of Guests
               </label>
               
@@ -172,7 +172,7 @@ export const RSVPSection = () => {
 
             {/* Field 3: Will you attend? */}
             <div className="flex flex-col gap-1.5 w-full">
-              <label className="font-sans-clean text-[11.5px] xs:text-[12px] font-normal text-[#d4af37] tracking-wider uppercase">
+              <label className="font-sans-clean text-[11px] xs:text-[11.5px] font-medium text-[#d4af37] tracking-[0.15em] uppercase">
                 Will you attend?
               </label>
               <div className="grid grid-cols-2 gap-3 w-full">
@@ -208,7 +208,7 @@ export const RSVPSection = () => {
                 type="submit"
                 whileHover={!formData.name.trim() || !formData.attending ? {} : { scale: 1.04 }}
                 whileTap={!formData.name.trim() || !formData.attending ? {} : { scale: 0.96 }}
-                className={`w-full max-w-[210px] h-[44px] xs:h-[46px] rounded-full font-sans-clean font-semibold text-[13.5px] tracking-[0.05em] uppercase flex items-center justify-center transition-all border-none ${
+                className={`w-full max-w-[210px] h-[44px] xs:h-[46px] rounded-full font-sans-clean font-semibold text-[12.5px] xs:text-[13px] tracking-[0.1em] uppercase flex items-center justify-center transition-all border-none ${
                   !formData.name.trim() || !formData.attending
                     ? 'bg-[#d4af37]/30 text-[#857a6b] cursor-not-allowed shadow-none'
                     : 'bg-gradient-to-r from-[#d4af37] via-[#f5d77f] to-[#b8923f] text-[#0a0908] shadow-[0_6px_20px_rgba(212,175,55,0.35)] cursor-pointer'

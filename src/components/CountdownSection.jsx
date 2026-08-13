@@ -34,9 +34,9 @@ export const CountdownSection = () => {
   return (
     <section 
       id="countdown"
-      className="relative w-full py-16 xs:py-20 sm:py-24 px-5 flex flex-col items-center justify-center overflow-hidden text-[#F2E5C7]"
+      className="relative w-full py-14 xs:py-18 sm:py-22 px-5 flex flex-col items-center justify-center overflow-hidden text-[#F2E5C7]"
       style={{
-        background: 'linear-gradient(145.85deg, #4D300E 0%, #613706 47.21%, #4D300E 95.71%)'
+        background: 'linear-gradient(145.85deg, #3a2309 0%, #4a2903 47.21%, #3a2309 95.71%)'
       }}
     >
       <div className="w-full max-w-sm md:max-w-xl lg:max-w-2xl flex flex-col items-center text-center gap-6">
@@ -50,16 +50,16 @@ export const CountdownSection = () => {
           className="flex flex-col items-center gap-2.5 w-full"
         >
           <span 
-            className="font-mona font-normal text-[10px] uppercase text-[#F2E5C7] tracking-[0.25em] whitespace-nowrap"
+            className="font-sans-clean font-medium text-[11px] xs:text-xs text-[#d4af37] tracking-[0.3em] uppercase whitespace-nowrap"
           >
             UNTIL WE BECOME ONE
           </span>
- 
-          <h2 className="font-vibes font-normal text-[46px] md:text-[54px] lg:text-[60px] text-[#F2E5C7] leading-tight mt-1">
-            Countdown to our<br />Special Day
+
+          <h2 className="font-vibes text-[44px] xs:text-[52px] sm:text-[58px] text-[#f5d77f] leading-tight mt-1 drop-shadow-md">
+            Countdown to our Special Day
           </h2>
         </motion.div>
- 
+
         {/* 4 Timer Boxes Grid */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
@@ -76,15 +76,15 @@ export const CountdownSection = () => {
           ].map((item, index) => (
             <div 
               key={index}
-              className="w-[72px] h-[72px] md:w-[84px] md:h-[84px] lg:w-[100px] lg:h-[100px] rounded-[14px] flex flex-col items-center justify-center gap-0.5 border border-[#7A4B13]/60 shadow-[0_8px_20px_rgba(0,0,0,0.35)] relative overflow-hidden"
+              className="w-[72px] h-[72px] md:w-[84px] md:h-[84px] lg:w-[100px] lg:h-[100px] rounded-[16px] flex flex-col items-center justify-center gap-0.5 border border-[#d4af37]/40 shadow-[0_10px_25px_rgba(0,0,0,0.5)] relative overflow-hidden"
               style={{
-                background: 'linear-gradient(145deg, #3D2206 0%, #2A1502 100%)'
+                background: 'linear-gradient(145deg, #2A1502 0%, #1c0d01 100%)'
               }}
             >
-              <span className="font-mona font-normal text-[24px] md:text-[28px] lg:text-[34px] text-[#F2E5C7] leading-none">
+              <span className="font-display font-medium text-[24px] md:text-[28px] lg:text-[34px] text-[#f5d77f] leading-none">
                 {String(item.value).padStart(2, '0')}
               </span>
-              <span className="font-mona font-normal text-[8px] md:text-[9px] lg:text-[10px] tracking-[0.16em] text-[#F2E5C7]/80 uppercase mt-0.5">
+              <span className="font-sans-clean font-medium text-[8.5px] md:text-[9.5px] lg:text-[10.5px] tracking-[0.2em] text-[#d4af37] uppercase mt-1">
                 {item.label}
               </span>
             </div>
@@ -97,9 +97,9 @@ export const CountdownSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.4 }}
-          className="font-mona font-normal text-[14px] text-[#F2E5C7] tracking-[0.05em] text-center mt-1"
+          className="font-cormorant text-[16px] xs:text-[17px] text-[#f7f3eb] tracking-[0.1em] text-center mt-1"
         >
-          05 Sept 2026. 11:00 AM
+          Saturday, 05 Sept 2026. 11:00 AM
         </motion.p>
       </div>
     </section>

@@ -8,7 +8,7 @@ export const NikkahEventSection = () => {
   return (
     <section 
       id="nikkah-section"
-      className="relative w-full py-12 md:py-10 px-4 xs:px-5 flex flex-col items-center justify-center bg-[#0c0a08] overflow-hidden"
+      className="relative w-full py-14 xs:py-18 sm:py-22 px-4 xs:px-5 flex flex-col items-center justify-center bg-[#0c0a08] overflow-hidden"
     >
       <div className="w-full max-w-[360px] xs:max-w-[380px] sm:max-w-[400px] flex flex-col items-center text-center">
         
@@ -25,7 +25,7 @@ export const NikkahEventSection = () => {
             <GoldOrnamentWingLeft className="w-14 xs:w-16 sm:w-20 h-auto opacity-90 shrink-0" />
             
             <span 
-              className="font-sans-clean font-normal text-[11px] xs:text-[12px] text-[#d4af37] uppercase tracking-[0.2em] whitespace-nowrap"
+              className="font-sans-clean font-medium text-[11px] xs:text-xs text-[#d4af37] tracking-[0.3em] uppercase whitespace-nowrap"
             >
               SACRED NIKKAH
             </span>
@@ -33,7 +33,7 @@ export const NikkahEventSection = () => {
             <GoldOrnamentWingRight className="w-14 xs:w-16 sm:w-20 h-auto opacity-90 shrink-0" />
           </div>
 
-          <h2 className="font-vibes font-normal text-[48px] xs:text-[54px] text-[#f5d77f] leading-tight select-none mt-1 drop-shadow-md">
+          <h2 className="font-vibes text-[44px] xs:text-[52px] sm:text-[58px] text-[#f5d77f] leading-tight select-none mt-1 drop-shadow-md">
             Save Our Date
           </h2>
         </motion.div>
@@ -67,14 +67,14 @@ export const NikkahEventSection = () => {
             
             {/* Ceremony Subhead */}
             <p 
-              className="font-sans-clean font-normal text-[10px] xs:text-[10.5px] text-[#d4af37] uppercase mb-4 tracking-[0.36em]"
+              className="font-sans-clean font-medium text-[11px] text-[#d4af37] uppercase mb-3 tracking-[0.3em]"
             >
               SOLEMNIZATION AT
             </p>
 
             {/* Venue Heading */}
             <h3 
-              className="font-display font-medium text-[32px] xs:text-[36px] text-[#f7f3eb] leading-[1.15] mb-6 text-gold-glow"
+              className="font-display font-medium text-[30px] xs:text-[34px] text-[#f7f3eb] leading-[1.15] mb-5 text-gold-glow"
             >
               Madavoor Palace
             </h3>
@@ -87,13 +87,13 @@ export const NikkahEventSection = () => {
                 <line x1="8" y1="2" x2="8" y2="6" />
                 <line x1="3" y1="10" x2="21" y2="10" />
               </svg>
-              <span className="font-sans-clean text-[13px] xs:text-[13.5px] font-normal text-[#f7f3eb]">
+              <span className="font-cormorant text-[16px] xs:text-[17px] font-normal text-[#f7f3eb]">
                 Saturday, 05 Sept 2026
               </span>
             </div>
 
             {/* Time & Location Details */}
-            <div className="flex items-center justify-center gap-4 xs:gap-5 text-[12px] xs:text-[12.5px] font-sans-clean font-normal text-[#c2b5a1] mb-6 xs:mb-7">
+            <div className="flex items-center justify-center gap-4 xs:gap-5 text-[14px] xs:text-[15px] font-cormorant font-normal text-[#c2b5a1] mb-6 xs:mb-7">
               <span className="flex items-center gap-1.5">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f5d77f" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="shrink-0">
                   <circle cx="12" cy="12" r="10" />
@@ -118,7 +118,7 @@ export const NikkahEventSection = () => {
               rel="noopener noreferrer"
               whileHover={{ scale: 1.04 }}
               whileTap={{ scale: 0.96 }}
-              className="w-full max-w-[210px] xs:max-w-[220px] h-[42px] xs:h-[44px] rounded-full bg-gradient-to-r from-[#d4af37] via-[#f5d77f] to-[#b8923f] text-[#0c0a08] font-sans-clean font-semibold text-[13px] xs:text-[13.5px] tracking-[0.35px] flex items-center justify-center shadow-[0_6px_20px_rgba(212,175,55,0.35)] transition-all cursor-pointer no-underline"
+              className="w-full max-w-[210px] xs:max-w-[220px] h-[42px] xs:h-[44px] rounded-full bg-gradient-to-r from-[#d4af37] via-[#f5d77f] to-[#b8923f] text-[#0c0a08] font-sans-clean font-semibold text-[12.5px] xs:text-[13px] tracking-[0.1em] uppercase flex items-center justify-center shadow-[0_6px_20px_rgba(212,175,55,0.35)] transition-all cursor-pointer no-underline"
             >
               <span>View Map Location</span>
             </motion.a>
