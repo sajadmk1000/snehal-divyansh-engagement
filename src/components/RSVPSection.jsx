@@ -27,8 +27,8 @@ export const RSVPSection = () => {
     });
 
     const attendanceText = formData.attending === 'yes' ? 'Joyfully Accept' : 'Regretfully Decline';
-    const messageText = `Assalamu Alaikum! I would like to confirm my RSVP for the Nikah Ceremony of Amal Ameen & Minsha:\n\n*Guest Name:* ${formData.name}\n*Number of Guests:* ${formData.guests}\n*Attendance:* ${attendanceText}`;
-    const whatsappUrl = `https://wa.me/919496635847?text=${encodeURIComponent(messageText)}`;
+    const messageText = `Namaste! 🙏 I would like to confirm my RSVP for the Engagement of Lt. Snehal & Lt. Divyansh:\n\n*Guest Name:* ${formData.name}\n*Number of Guests:* ${formData.guests}\n*Attendance:* ${attendanceText}`;
+    const whatsappUrl = `https://wa.me/919175341340?text=${encodeURIComponent(messageText)}`;
     
     window.open(whatsappUrl, '_blank');
   };
@@ -88,7 +88,7 @@ export const RSVPSection = () => {
             <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#f5d77f] to-[#d4af37] text-[#0a0908] flex items-center justify-center text-xl font-bold shadow-md">
               ✓
             </div>
-            <h3 className="font-vibes text-3xl text-[#f5d77f]">JazakAllah Khair!</h3>
+            <h3 className="font-vibes text-3xl text-[#f5d77f]">Dhanyavaad!</h3>
             <p className="font-cormorant text-base text-[#f7f3eb]">
               Your response has been submitted. We look forward to seeing you!
             </p>

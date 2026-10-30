@@ -13,7 +13,7 @@ export const FooterSection = () => {
       {/* Background Stage Image */}
       <div
         className="absolute inset-0 pointer-events-none bg-cover bg-center opacity-25 filter contrast-110"
-        style={{ backgroundImage: `url('/images/footer/footer_stage_bg.jpg')` }}
+        style={{ backgroundImage: `url('/images/couple/footer_couple.png')`, filter: 'sepia(0.35) contrast(1.1)' }}
       />
 
       {/* Darkened vignette overlay */}
@@ -53,7 +53,7 @@ export const FooterSection = () => {
           </h3>
         </motion.div>
 
-        {/* Islamic Du'a Prayer Text */}
+        {/* Blessing Text */}
         <motion.p
           initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -62,9 +62,9 @@ export const FooterSection = () => {
           className="font-cormorant italic text-[16px] xs:text-[18px] text-[#f7f3eb]/95 w-full max-w-[340px] text-center leading-[1.65] px-2 my-2"
         >
           <span className="block">With love, prayers, and deep gratitude.</span>
-          <span className="block">May Allah bless this union with</span>
-          <span className="block">Barakah, Mercy, Harmony and</span>
-          <span className="block">Eternal happiness. Aameen!</span>
+          <span className="block">May Lord Ganesha bless this new bond with</span>
+          <span className="block">Love, Prosperity, Harmony and</span>
+          <span className="block">Eternal happiness!</span>
         </motion.p>
 
         {/* Footer Credit Line from card */}
@@ -76,7 +76,7 @@ export const FooterSection = () => {
           className="mt-4 pt-4 border-t border-[#d4af37]/25 w-full max-w-[280px]"
         >
           <p className="font-sans-clean text-[11px] xs:text-xs text-[#d4af37] tracking-[0.25em] uppercase font-medium">
-            Sharing the happiness : Family
+            Sharing the happiness : Patil &amp; Sharma Families
           </p>
         </motion.div>
       </div>

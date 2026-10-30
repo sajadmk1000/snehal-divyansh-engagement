@@ -91,16 +91,16 @@ export const Envelope = ({ onOpen }) => {
                 className="h-full w-auto max-w-none block object-cover object-left"
               />
 
-              {/* RESPONSIVE FLUID NAMES AND DATE FOR AMAL AMEEN & MINSHA */}
+              {/* RESPONSIVE FLUID NAMES AND DATE */}
               <div
                 className="absolute left-4 xs:left-6 text-left pointer-events-none z-25 flex flex-col items-start justify-center max-w-[85%]"
                 style={{ bottom: '8cqw', left: '4cqw' }}
               >
                 <div className="font-script text-[clamp(16px,5.2cqw,24px)] text-[#f5d77f] drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)] tracking-wide leading-tight">
-                  Amal Ameen &amp; Minsha
+                  Snehal &amp; Divyansh
                 </div>
                 <div className="font-sans-clean text-[clamp(9px,2.5cqw,12px)] text-[#d4af37] tracking-[0.3em] uppercase mt-1 drop-shadow-md whitespace-nowrap">
-                  05 . 09 . 2026
+                  03 . 12 . 2026
                 </div>
               </div>
             </motion.div>
@@ -121,16 +121,39 @@ export const Envelope = ({ onOpen }) => {
                 className="h-full w-auto max-w-none block object-cover object-right"
               />
 
-              {/* AUTHENTIC AM GOLD WAX SEAL MOUNTED AT THE RIGHT FLAP APEX TIP */}
+              {/* GOLD WAX SEAL MOUNTED AT THE RIGHT FLAP APEX TIP */}
               <div
                 className="absolute pointer-events-none z-30"
                 style={{ left: '0.5%', top: '50%', transform: 'translate(-50%, -50%)' }}
               >
-                <img
-                  src="/images/envelope/am_seal_clean.png"
-                  alt="AM Gold Wax Seal"
-                  className="w-[clamp(110px,38cqw,180px)] h-[clamp(110px,38cqw,180px)] object-contain"
-                />
+                <div className="relative w-[clamp(110px,38cqw,180px)] h-[clamp(110px,38cqw,180px)]" style={{ containerType: 'inline-size' }}>
+                  <img
+                    src="/images/envelope/am_seal_clean.png"
+                    alt="SD Gold Wax Seal"
+                    className="w-full h-full object-contain"
+                  />
+                  {/* Smooths away the original engraving so the new monogram can be pressed in */}
+                  <img
+                    src="/images/envelope/am_seal_clean.png"
+                    alt=""
+                    aria-hidden="true"
+                    className="absolute inset-0 w-full h-full object-contain"
+                    style={{ filter: 'blur(5px)', clipPath: 'circle(29% at 49.5% 49%)' }}
+                  />
+                  <span
+                    className="absolute inset-0 flex items-center justify-center font-display font-bold leading-none"
+                    style={{
+                      fontSize: '27cqw',
+                      paddingRight: '1cqw',
+                      paddingBottom: '2cqw',
+                      color: '#b78338',
+                      letterSpacing: '-0.02em',
+                      textShadow: '-1px -1px 0 rgba(255, 226, 160, 0.75), 1.5px 1.5px 1px rgba(78, 44, 10, 0.75), 2.5px 2.5px 3px rgba(60, 32, 6, 0.4)',
+                    }}
+                  >
+                    SD
+                  </span>
+                </div>
               </div>
             </motion.div>
           </div>

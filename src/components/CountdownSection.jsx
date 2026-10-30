@@ -1,33 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
-export const CountdownSection = () => {
-  const targetDate = new Date('2026-09-05T11:00:00');
+// 3 Dec 2026, 6:30 PM IST (= 13:00 UTC)
+const ENGAGEMENT_TIME = Date.UTC(2026, 11, 3, 13, 0, 0);
 
-  const [timeLeft, setTimeLeft] = useState({
-    days: 0,
-    hours: 0,
-    minutes: 0,
-    seconds: 0
-  });
+const getTimeLeft = () => {
+  const difference = Math.max(0, ENGAGEMENT_TIME - Date.now());
+  return {
+    days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+    hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+    minutes: Math.floor((difference / 1000 / 60) % 60),
+    seconds: Math.floor((difference / 1000) % 60)
+  };
+};
+
+export const CountdownSection = () => {
+  const [timeLeft, setTimeLeft] = useState(getTimeLeft);
 
   useEffect(() => {
-    const calculateTimeLeft = () => {
-      const now = new Date();
-      const difference = targetDate.getTime() - now.getTime();
-
-      if (difference > 0) {
-        setTimeLeft({
-          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-          hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-          minutes: Math.floor((difference / 1000 / 60) % 60),
-          seconds: Math.floor((difference / 1000) % 60)
-        });
-      }
-    };
-
-    calculateTimeLeft();
-    const timer = setInterval(calculateTimeLeft, 1000);
+    const timer = setInterval(() => setTimeLeft(getTimeLeft()), 1000);
     return () => clearInterval(timer);
   }, []);
 
@@ -52,7 +43,7 @@ export const CountdownSection = () => {
           <span 
             className="font-sans-clean font-medium text-[11px] xs:text-xs text-[#d4af37] tracking-[0.3em] uppercase whitespace-nowrap"
           >
-            UNTIL WE BECOME ONE
+            UNTIL THE RING CEREMONY
           </span>
 
           <h2 className="font-vibes text-[44px] xs:text-[52px] sm:text-[58px] text-[#f5d77f] leading-tight mt-1 drop-shadow-md">
@@ -99,7 +90,7 @@ export const CountdownSection = () => {
           transition={{ duration: 0.7, delay: 0.4 }}
           className="font-cormorant text-[16px] xs:text-[17px] text-[#f7f3eb] tracking-[0.1em] text-center mt-1"
         >
-          Saturday, 05 Sept 2026. 11:00 AM
+          Thursday, 03 Dec 2026. 6:30 PM
         </motion.p>
       </div>
     </section>

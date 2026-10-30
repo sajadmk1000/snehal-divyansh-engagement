@@ -121,18 +121,13 @@ export default function MusicPlayer({ isPlaying, setIsPlaying, autoStartTrigger 
 
   return (
     <>
-      {/* Background Nasheed Audio Track (Plays from the start 0:00) */}
+      {/* Background Audio Track (Plays from the start 0:00) */}
       <audio
         ref={audioRef}
         preload="auto"
         loop
-        src="/nasheed.mp3"
+        src="/music.mp3"
         onCanPlay={() => setAudioLoaded(true)}
-        onError={() => {
-          if (audioRef.current) {
-            audioRef.current.src = 'https://archive.org/download/Maher_Zean_www.suratmp3.com/Baraka_Allahu_Lakuma.mp3';
-          }
-        }}
       />
 
       {/* Floating Sound Toggle Button */}

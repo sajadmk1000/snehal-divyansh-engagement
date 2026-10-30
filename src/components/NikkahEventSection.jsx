@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { GoldOrnamentWingLeft, GoldOrnamentWingRight } from './GoldOrnamentDivider';
 
 export const NikkahEventSection = () => {
-  const mapUrl = "https://maps.app.goo.gl/J1es4wUpcdWKG1af6?g_st=ic";
+  const mapUrl = "https://maps.app.goo.gl/ixWmxvL7pEW8gfGFA?g_st=ac";
 
   return (
     <section 
@@ -27,7 +27,7 @@ export const NikkahEventSection = () => {
             <span 
               className="font-sans-clean font-medium text-[11px] xs:text-xs text-[#d4af37] tracking-[0.3em] uppercase whitespace-nowrap"
             >
-              SACRED NIKKAH
+              SAKHARPUDA
             </span>
             
             <GoldOrnamentWingRight className="w-14 xs:w-16 sm:w-20 h-auto opacity-90 shrink-0" />
@@ -49,15 +49,13 @@ export const NikkahEventSection = () => {
             background: 'linear-gradient(180deg, rgba(28, 22, 17, 0.95) 0%, rgba(14, 11, 8, 0.98) 100%)'
           }}
         >
-          {/* Praying Couple Image */}
+          {/* Couple Image */}
           <div className="w-full h-[240px] xs:h-[260px] relative overflow-hidden bg-[#15100a] shrink-0">
             <img 
-              src="/images/nikkah/nikkah_praying_couple.png" 
-              alt="Praying Couple at Nikkah" 
-              className="w-full h-full object-cover object-center select-none block pointer-events-none filter contrast-105 saturate-95 hover:scale-105 transition-transform duration-700"
-              onError={(e) => {
-                e.currentTarget.src = '/dark-couple.jpg';
-              }}
+              src="/images/couple/venue_couple.jpg" 
+              alt="Snehal & Divyansh" 
+              className="w-full h-full object-cover object-center select-none block pointer-events-none hover:scale-105 transition-transform duration-700"
+              style={{ filter: 'sepia(0.3) saturate(0.95) contrast(1.05) brightness(0.88)' }}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#140f0a] via-transparent to-black/20" />
           </div>
@@ -69,14 +67,14 @@ export const NikkahEventSection = () => {
             <p 
               className="font-sans-clean font-medium text-[11px] text-[#d4af37] uppercase mb-3 tracking-[0.3em]"
             >
-              SOLEMNIZATION AT
+              ENGAGEMENT CEREMONY AT
             </p>
 
             {/* Venue Heading */}
             <h3 
               className="font-display font-medium text-[30px] xs:text-[34px] text-[#f7f3eb] leading-[1.15] mb-5 text-gold-glow"
             >
-              Madavoor Palace
+              Saraswati Lawn
             </h3>
 
             {/* Date Details */}
@@ -88,7 +86,7 @@ export const NikkahEventSection = () => {
                 <line x1="3" y1="10" x2="21" y2="10" />
               </svg>
               <span className="font-cormorant text-[16px] xs:text-[17px] font-normal text-[#f7f3eb]">
-                Saturday, 05 Sept 2026
+                Thursday, 03 Dec 2026
               </span>
             </div>
 
@@ -99,7 +97,7 @@ export const NikkahEventSection = () => {
                   <circle cx="12" cy="12" r="10" />
                   <polyline points="12 6 12 12 16 14" />
                 </svg>
-                11:00 AM
+                6:30 PM – 8:30 PM
               </span>
               
               <span className="flex items-center gap-1.5">
@@ -107,9 +105,16 @@ export const NikkahEventSection = () => {
                   <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
                   <circle cx="12" cy="10" r="3" />
                 </svg>
-                Madavoor, Kozhikode
+                Tasgaon
               </span>
             </div>
+
+            {/* Address & Landmark */}
+            <p className="font-cormorant text-[14px] xs:text-[15px] italic text-[#c2b5a1] leading-[1.5] -mt-3 mb-6 xs:mb-7 max-w-[280px]">
+              Tasgaon–Vita Road, Tasgaon
+              <br />
+              Beside Saraswati Furniture, opp. Ayyangar Bakery
+            </p>
 
             {/* Open In Map Button - Metallic Gold Button */}
             <motion.a 
