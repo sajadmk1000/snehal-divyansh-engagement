@@ -97,7 +97,7 @@ export const Envelope = ({ onOpen }) => {
                 style={{ bottom: '8cqw', left: '4cqw' }}
               >
                 <div className="font-script text-[clamp(16px,5.2cqw,24px)] text-[#f5d77f] drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)] tracking-wide leading-tight">
-                  Snehal &amp; Divyansh
+                  Lt. Snehal &amp; Lt. Divyansh
                 </div>
                 <div className="font-sans-clean text-[clamp(9px,2.5cqw,12px)] text-[#d4af37] tracking-[0.3em] uppercase mt-1 drop-shadow-md whitespace-nowrap">
                   03 . 12 . 2026

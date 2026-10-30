@@ -40,7 +40,7 @@ export default function HeroSection() {
           transition={{ duration: 1.2, delay: 0.2 }}
           className="font-vibes flex flex-col items-center text-[52px] xs:text-[62px] sm:text-[72px] text-[#f5d77f] drop-shadow-md leading-tight"
         >
-          <span className="pb-1">Snehal</span>
+          <span className="pb-1">Lt. Snehal</span>
 
           {/* Polished Gold Intertwined Rings Emblem */}
           <div className="my-2 sm:my-3 flex items-center justify-center relative">
@@ -52,7 +52,7 @@ export default function HeroSection() {
             />
           </div>
 
-          <span className="pt-1">Divyansh</span>
+          <span className="pt-1">Lt. Divyansh</span>
         </motion.h1>
 
         {/* Invitation Subtext */}
