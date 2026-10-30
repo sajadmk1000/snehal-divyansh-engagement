@@ -18,7 +18,7 @@
   body {
     margin: 0;
     padding: 0;
-    font-family: 'Jost', sans-serif;
+    font-family: 'Jost', 'Mukta', sans-serif;
     background-color: var(--bg-dark);
     color: var(--text-primary);
     overflow-x: hidden;
@@ -34,15 +34,15 @@
 }
 
 .font-display {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Cormorant Garamond', 'Tiro Devanagari Marathi', serif;
 }
 
 .font-script {
-  font-family: 'Great Vibes', 'Parisienne', cursive;
+  font-family: 'Great Vibes', 'Parisienne', 'Rozha One', cursive;
 }
 
 .font-sans-clean {
-  font-family: 'Jost', sans-serif;
+  font-family: 'Jost', 'Mukta', sans-serif;
 }
 
 /* Professional Line Heights & Letter Spacing */
@@ -97,7 +97,7 @@
 }
 
 .eyebrow-dark {
-  font-family: 'Jost', sans-serif;
+  font-family: 'Jost', 'Mukta', sans-serif;
   font-size: 0.75rem;
   font-weight: 300;
   text-transform: uppercase;
@@ -136,19 +136,31 @@
 
 /* Explicit font family definitions */
 .font-abhaya {
-  font-family: 'Abhaya Libre', serif !important;
+  font-family: 'Abhaya Libre', 'Tiro Devanagari Marathi', serif !important;
 }
 
 .font-cormorant {
-  font-family: 'Cormorant Infant', 'Cormorant Garamond', serif !important;
+  font-family: 'Cormorant Infant', 'Cormorant Garamond', 'Tiro Devanagari Marathi', serif !important;
 }
 
 .font-playfair {
-  font-family: 'Playfair Display', serif !important;
+  font-family: 'Playfair Display', 'Tiro Devanagari Marathi', serif !important;
 }
 
 .font-vibes {
-  font-family: 'Great Vibes', cursive !important;
+  font-family: 'Great Vibes', 'Rozha One', cursive !important;
+}
+
+/* Marathi (Devanagari) text: wide Latin tracking breaks conjuncts apart,
+   and very small sizes make matras unreadable */
+html[lang="mr"] [class*="tracking-"] {
+  letter-spacing: 0.04em !important;
+}
+html[lang="mr"] .text-\[11px\] {
+  font-size: 13px;
+}
+html[lang="mr"] .text-\[8\.5px\] {
+  font-size: 11px;
 }
 
 /* Falling leaves and floating dust animations */

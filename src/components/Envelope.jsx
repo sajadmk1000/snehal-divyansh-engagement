@@ -63,7 +63,7 @@ export const Envelope = ({ onOpen }) => {
             >
               <img
                 src="/images/envelope/envelope_bg_paper.png"
-                alt="Envelope Paper Background"
+                alt="निमंत्रण पाकीट"
                 className="w-full h-full object-cover block"
               />
             </motion.div>
@@ -87,7 +87,7 @@ export const Envelope = ({ onOpen }) => {
             >
               <img
                 src="/images/envelope/envelope_flap_left.png"
-                alt="Left Envelope Flap"
+                alt="पाकिटाची डावी बाजू"
                 className="h-full w-auto max-w-none block object-cover object-left"
               />
 
@@ -97,10 +97,10 @@ export const Envelope = ({ onOpen }) => {
                 style={{ bottom: '8cqw', left: '4cqw' }}
               >
                 <div className="font-script text-[clamp(16px,5.2cqw,24px)] text-[#f5d77f] drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)] tracking-wide leading-tight">
-                  Lt. Snehal &amp; Lt. Divyansh
+                  ले. स्नेहल व ले. दिव्यांश
                 </div>
                 <div className="font-sans-clean text-[clamp(9px,2.5cqw,12px)] text-[#d4af37] tracking-[0.3em] uppercase mt-1 drop-shadow-md whitespace-nowrap">
-                  03 . 12 . 2026
+                  ०३ . १२ . २०२६
                 </div>
               </div>
             </motion.div>
@@ -117,7 +117,7 @@ export const Envelope = ({ onOpen }) => {
             >
               <img
                 src="/images/envelope/envelope_flap_right.png"
-                alt="Right Envelope Flap"
+                alt="पाकिटाची उजवी बाजू"
                 className="h-full w-auto max-w-none block object-cover object-right"
               />
 
@@ -129,7 +129,7 @@ export const Envelope = ({ onOpen }) => {
                 <div className="relative w-[clamp(110px,38cqw,180px)] h-[clamp(110px,38cqw,180px)]" style={{ containerType: 'inline-size' }}>
                   <img
                     src="/images/envelope/am_seal_clean.png"
-                    alt="SD Gold Wax Seal"
+                    alt="सोनेरी मुद्रा"
                     className="w-full h-full object-contain"
                   />
                   {/* Smooths away the original engraving so the new monogram can be pressed in */}

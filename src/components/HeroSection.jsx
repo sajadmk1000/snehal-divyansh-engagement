@@ -8,7 +8,7 @@ export default function HeroSection() {
       <div className="absolute inset-0 z-0 overflow-hidden opacity-30">
         <img
           src="/images/couple/swing_couple.png"
-          alt="Snehal & Divyansh"
+          alt="स्नेहल व दिव्यांश"
           className="h-full w-full object-contain object-bottom"
           style={{ filter: 'sepia(0.35) saturate(0.95) contrast(1.05)' }}
         />
@@ -27,7 +27,7 @@ export default function HeroSection() {
         >
           <span className="gold-rule-dark h-px w-10 xs:w-12 sm:w-20" />
           <span className="font-sans-clean font-medium text-[11px] xs:text-xs text-[#d4af37] tracking-[0.3em] uppercase">
-            WITH THE BLESSINGS OF LORD GANESHA
+            श्री गणेशाच्या कृपाशीर्वादाने
           </span>
           <span className="gold-rule-dark h-px w-10 xs:w-12 sm:w-20" />
         </motion.div>
@@ -40,19 +40,19 @@ export default function HeroSection() {
           transition={{ duration: 1.2, delay: 0.2 }}
           className="font-vibes flex flex-col items-center text-[52px] xs:text-[62px] sm:text-[72px] text-[#f5d77f] drop-shadow-md leading-tight"
         >
-          <span className="pb-1">Lt. Snehal</span>
+          <span className="pb-1">ले. स्नेहल</span>
 
           {/* Polished Gold Intertwined Rings Emblem */}
           <div className="my-2 sm:my-3 flex items-center justify-center relative">
             <div className="absolute h-12 w-12 sm:h-16 sm:w-16 rounded-full bg-radial from-[#f5d77f]/45 via-[#d4af37]/20 to-transparent blur-lg animate-pulse" />
             <img
               src="/gold-rings.png"
-              alt="Polished Gold Engagement Rings"
+              alt="साखरपुड्याच्या सोन्याच्या अंगठ्या"
               className="h-10 w-12 sm:h-14 sm:w-16 object-contain drop-shadow-[0_8px_16px_rgba(212,175,55,0.5)]"
             />
           </div>
 
-          <span className="pt-1">Lt. Divyansh</span>
+          <span className="pt-1">ले. दिव्यांश</span>
         </motion.h1>
 
         {/* Invitation Subtext */}
@@ -63,7 +63,7 @@ export default function HeroSection() {
           transition={{ duration: 1, delay: 0.4 }}
           className="font-cormorant mt-6 sm:mt-8 max-w-md text-[16px] xs:text-[18px] sm:text-[20px] font-normal italic leading-[1.6] text-[#c2b5a1] px-2"
         >
-          Invite you to join them in celebrating their Sakharpuda &amp; the beautiful beginning of forever
+          यांच्या साखरपुड्याच्या मंगल सोहळ्यास आपण सहकुटुंब उपस्थित राहावे, ही नम्र विनंती
         </motion.p>
 
         {/* Date & Time Badge */}
@@ -74,13 +74,13 @@ export default function HeroSection() {
           transition={{ duration: 1, delay: 0.6 }}
           className="glass-card-dark mt-7 sm:mt-9 inline-flex flex-wrap items-center justify-center gap-3 xs:gap-4 rounded-full px-6 xs:px-8 py-3 sm:py-3.5 border border-[#d4af37]/40 shadow-2xl"
         >
-          <span className="font-sans-clean font-medium text-[11px] xs:text-xs text-[#f5d77f] tracking-[0.2em] uppercase">THURSDAY</span>
+          <span className="font-sans-clean font-medium text-[11px] xs:text-xs text-[#f5d77f] tracking-[0.2em] uppercase">गुरुवार</span>
           <span className="h-3 w-px bg-[#d4af37]/50" />
           <span className="font-display text-base xs:text-lg font-medium text-[#f7f3eb] text-gold-glow tracking-wider">
-            DEC 03, 2026
+            ०३ डिसेंबर २०२६
           </span>
           <span className="h-3 w-px bg-[#d4af37]/50" />
-          <span className="font-sans-clean font-medium text-[11px] xs:text-xs text-[#f5d77f] tracking-[0.2em] uppercase">AT 6:30 PM</span>
+          <span className="font-sans-clean font-medium text-[11px] xs:text-xs text-[#f5d77f] tracking-[0.2em] uppercase">सायं. ६.३० वा.</span>
         </motion.div>
       </div>
     </section>

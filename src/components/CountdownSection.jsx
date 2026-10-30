@@ -14,6 +14,9 @@ const getTimeLeft = () => {
   };
 };
 
+const MARATHI_DIGITS = ['०', '१', '२', '३', '४', '५', '६', '७', '८', '९'];
+const toMarathiDigits = (value) => String(value).replace(/\d/g, (d) => MARATHI_DIGITS[d]);
+
 export const CountdownSection = () => {
   const [timeLeft, setTimeLeft] = useState(getTimeLeft);
 
@@ -43,11 +46,11 @@ export const CountdownSection = () => {
           <span 
             className="font-sans-clean font-medium text-[11px] xs:text-xs text-[#d4af37] tracking-[0.3em] uppercase whitespace-nowrap"
           >
-            UNTIL THE RING CEREMONY
+            शुभ मुहूर्तापर्यंत
           </span>
 
           <h2 className="font-vibes text-[44px] xs:text-[52px] sm:text-[58px] text-[#f5d77f] leading-tight mt-1 drop-shadow-md">
-            Countdown to our Special Day
+            शुभदिनाची उलटगणती
           </h2>
         </motion.div>
 
@@ -60,10 +63,10 @@ export const CountdownSection = () => {
           className="grid grid-cols-4 gap-2.5 md:gap-4 lg:gap-5 w-full max-w-[325px] md:max-w-[400px] lg:max-w-[500px] mx-auto justify-items-center my-1"
         >
           {[
-            { label: 'DAYS', value: timeLeft.days },
-            { label: 'HOURS', value: timeLeft.hours },
-            { label: 'MINUTES', value: timeLeft.minutes },
-            { label: 'SECONDS', value: timeLeft.seconds }
+            { label: 'दिवस', value: timeLeft.days },
+            { label: 'तास', value: timeLeft.hours },
+            { label: 'मिनिटे', value: timeLeft.minutes },
+            { label: 'सेकंद', value: timeLeft.seconds }
           ].map((item, index) => (
             <div 
               key={index}
@@ -73,7 +76,7 @@ export const CountdownSection = () => {
               }}
             >
               <span className="font-display font-medium text-[24px] md:text-[28px] lg:text-[34px] text-[#f5d77f] leading-none">
-                {String(item.value).padStart(2, '0')}
+                {toMarathiDigits(String(item.value).padStart(2, '0'))}
               </span>
               <span className="font-sans-clean font-medium text-[8.5px] md:text-[9.5px] lg:text-[10.5px] tracking-[0.2em] text-[#d4af37] uppercase mt-1">
                 {item.label}
@@ -90,7 +93,7 @@ export const CountdownSection = () => {
           transition={{ duration: 0.7, delay: 0.4 }}
           className="font-cormorant text-[16px] xs:text-[17px] text-[#f7f3eb] tracking-[0.1em] text-center mt-1"
         >
-          Thursday, 03 Dec 2026. 6:30 PM
+          गुरुवार, ०३ डिसेंबर २०२६, सायं. ६.३० वा.
         </motion.p>
       </div>
     </section>

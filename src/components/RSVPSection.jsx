@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import confetti from 'canvas-confetti';
 
+const MARATHI_DIGITS = ['०', '१', '२', '३', '४', '५', '६', '७', '८', '९'];
+const toMarathiDigits = (value) => String(value).replace(/\d/g, (d) => MARATHI_DIGITS[d]);
+
 export const RSVPSection = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -26,8 +29,8 @@ export const RSVPSection = () => {
       colors: ['#F5D77F', '#D4AF37', '#AB924B']
     });
 
-    const attendanceText = formData.attending === 'yes' ? 'Joyfully Accept' : 'Regretfully Decline';
-    const messageText = `Namaste! 🙏 I would like to confirm my RSVP for the Engagement of Lt. Snehal & Lt. Divyansh:\n\n*Guest Name:* ${formData.name}\n*Number of Guests:* ${formData.guests}\n*Attendance:* ${attendanceText}`;
+    const attendanceText = formData.attending === 'yes' ? 'आनंदाने येईन' : 'क्षमस्व, येऊ शकणार नाही';
+    const messageText = `नमस्कार! 🙏 ले. स्नेहल व ले. दिव्यांश यांच्या साखरपुडा समारंभासाठी माझी उपस्थिती कळवत आहे:\n\n*पाहुण्यांचे नाव:* ${formData.name}\n*पाहुण्यांची संख्या:* ${toMarathiDigits(formData.guests)}\n*उपस्थिती:* ${attendanceText}`;
     const whatsappUrl = `https://wa.me/919175341340?text=${encodeURIComponent(messageText)}`;
     
     window.open(whatsappUrl, '_blank');
@@ -66,15 +69,15 @@ export const RSVPSection = () => {
           <span 
             className="font-sans-clean font-medium text-[11px] xs:text-xs text-[#d4af37] uppercase tracking-[0.3em] whitespace-nowrap mb-2"
           >
-            ATTENDANCE CONFIRMATION
+            उपस्थितीची पुष्टी
           </span>
 
           <h2 className="font-vibes text-[44px] xs:text-[52px] sm:text-[58px] text-[#f5d77f] leading-tight select-none mb-3 xs:mb-4 drop-shadow-md">
-            Kindly RSVP
+            कृपया कळवावे
           </h2>
 
           <p className="font-cormorant text-[15px] xs:text-[16px] sm:text-[17px] text-[#c2b5a1] w-full max-w-[340px] md:max-w-md leading-[1.6] text-center">
-            We look forward to celebrating this blessed day with you. Please confirm your attendance below.
+            हा मंगल दिवस आपल्यासोबत साजरा करण्यास आम्ही उत्सुक आहोत. कृपया खाली आपली उपस्थिती निश्चित करावी.
           </p>
         </motion.div>
 
@@ -88,9 +91,9 @@ export const RSVPSection = () => {
             <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#f5d77f] to-[#d4af37] text-[#0a0908] flex items-center justify-center text-xl font-bold shadow-md">
               ✓
             </div>
-            <h3 className="font-vibes text-3xl text-[#f5d77f]">Dhanyavaad!</h3>
+            <h3 className="font-vibes text-3xl text-[#f5d77f]">धन्यवाद!</h3>
             <p className="font-cormorant text-base text-[#f7f3eb]">
-              Your response has been submitted. We look forward to seeing you!
+              आपला प्रतिसाद आम्हाला मिळाला आहे. आपल्या भेटीची आम्ही आतुरतेने वाट पाहत आहोत!
             </p>
           </motion.div>
         ) : (
@@ -105,12 +108,12 @@ export const RSVPSection = () => {
             {/* Field 1: Guest Name */}
             <div className="flex flex-col gap-1.5 w-full">
               <label className="font-sans-clean text-[11px] xs:text-[11.5px] font-medium text-[#d4af37] tracking-[0.15em] uppercase">
-                Guest Name
+                पाहुण्यांचे नाव
               </label>
               <input 
                 type="text"
                 required
-                placeholder="Enter your name"
+                placeholder="आपले नाव लिहा"
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                 className="w-full h-[48px] xs:h-[50px] rounded-[18px] px-4 font-sans-clean text-[13px] text-[#f7f3eb] placeholder:text-[#857a6b] border border-[#d4af37]/35 bg-[#14100c] outline-none focus:border-[#f5d77f] transition-colors"
@@ -120,7 +123,7 @@ export const RSVPSection = () => {
             {/* Field 2: Number of guests */}
             <div className="flex flex-col gap-1.5 w-full relative">
               <label className="font-sans-clean text-[11px] xs:text-[11.5px] font-medium text-[#d4af37] tracking-[0.15em] uppercase">
-                Number of Guests
+                पाहुण्यांची संख्या
               </label>
               
               <div 
@@ -129,7 +132,7 @@ export const RSVPSection = () => {
                   dropdownOpen ? 'border-[#f5d77f]' : 'border-[#d4af37]/35'
                 }`}
               >
-                <span>{formData.guests} {Number(formData.guests) === 1 ? 'Guest' : 'Guests'}</span>
+                <span>{toMarathiDigits(formData.guests)} व्यक्ती</span>
                 <svg 
                   className={`w-4 h-4 text-[#d4af37] transition-transform duration-200 ${dropdownOpen ? 'rotate-180' : ''}`}
                   fill="none" 
@@ -162,7 +165,7 @@ export const RSVPSection = () => {
                             : 'hover:bg-[#d4af37]/20 hover:text-[#f5d77f]'
                         }`}
                       >
-                        {num} {num === 1 ? 'Guest' : 'Guests'}
+                        {toMarathiDigits(num)} व्यक्ती
                       </div>
                     ))}
                   </div>
@@ -173,7 +176,7 @@ export const RSVPSection = () => {
             {/* Field 3: Will you attend? */}
             <div className="flex flex-col gap-1.5 w-full">
               <label className="font-sans-clean text-[11px] xs:text-[11.5px] font-medium text-[#d4af37] tracking-[0.15em] uppercase">
-                Will you attend?
+                आपण उपस्थित राहाल का?
               </label>
               <div className="grid grid-cols-2 gap-3 w-full">
                 <button
@@ -185,7 +188,7 @@ export const RSVPSection = () => {
                       : 'bg-[#14100c] border-[#d4af37]/35 text-[#f7f3eb] hover:border-[#d4af37]'
                   }`}
                 >
-                  Joyfully accept
+                  आनंदाने येईन
                 </button>
 
                 <button
@@ -197,7 +200,7 @@ export const RSVPSection = () => {
                       : 'bg-[#14100c] border-[#d4af37]/35 text-[#f7f3eb] hover:border-[#d4af37]'
                   }`}
                 >
-                  Regretfully decline
+                  क्षमस्व, येऊ शकणार नाही
                 </button>
               </div>
             </div>
@@ -215,7 +218,7 @@ export const RSVPSection = () => {
                 }`}
                 disabled={!formData.name.trim() || !formData.attending}
               >
-                <span>Confirm RSVP</span>
+                <span>उपस्थिती निश्चित करा</span>
               </motion.button>
             </div>
           </motion.form>

@@ -29,7 +29,7 @@ export const FooterSection = () => {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="font-sans-clean font-medium text-[11px] xs:text-xs text-[#d4af37] tracking-[0.3em] uppercase text-center"
         >
-          FOREVER &amp; ALWAYS
+          सदैव सोबत
         </motion.p>
 
         {/* BEST WISHES FROM & Family and Friends */}
@@ -43,13 +43,13 @@ export const FooterSection = () => {
           <span
             className="font-cormorant font-medium text-[13px] xs:text-[14px] uppercase text-[#d4af37] text-center tracking-[0.3em]"
           >
-            BEST WISHES FROM
+            शुभेच्छुक
           </span>
 
           <h3
             className="font-vibes text-[44px] xs:text-[52px] sm:text-[58px] text-[#f5d77f] text-center leading-tight drop-shadow-md"
           >
-            Family &amp; Friends
+            आप्तेष्ट व मित्रपरिवार
           </h3>
         </motion.div>
 
@@ -61,10 +61,10 @@ export const FooterSection = () => {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="font-cormorant italic text-[16px] xs:text-[18px] text-[#f7f3eb]/95 w-full max-w-[340px] text-center leading-[1.65] px-2 my-2"
         >
-          <span className="block">With love, prayers, and deep gratitude.</span>
-          <span className="block">May Lord Ganesha bless this new bond with</span>
-          <span className="block">Love, Prosperity, Harmony and</span>
-          <span className="block">Eternal happiness!</span>
+          <span className="block">प्रेम, प्रार्थना आणि मनःपूर्वक कृतज्ञतेसह.</span>
+          <span className="block">श्री गणेश या नव्या नात्याला</span>
+          <span className="block">प्रेम, समृद्धी, सौहार्द आणि</span>
+          <span className="block">चिरंतन आनंदाचा आशीर्वाद देवो!</span>
         </motion.p>
 
         {/* Footer Credit Line from card */}
@@ -76,7 +76,7 @@ export const FooterSection = () => {
           className="mt-4 pt-4 border-t border-[#d4af37]/25 w-full max-w-[280px]"
         >
           <p className="font-sans-clean text-[11px] xs:text-xs text-[#d4af37] tracking-[0.25em] uppercase font-medium">
-            Sharing the happiness : Patil &amp; Sharma Families
+            आनंदात सहभागी : पाटील व शर्मा परिवार
           </p>
         </motion.div>
       </div>

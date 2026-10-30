@@ -136,7 +136,7 @@ export default function MusicPlayer({ isPlaying, setIsPlaying, autoStartTrigger 
           type="button"
           onClick={togglePlay}
           className="group relative flex h-13 w-13 items-center justify-center rounded-full border border-[#d4af37]/60 bg-[#1e1812]/80 text-[#dfc48c] shadow-2xl backdrop-blur-md transition-all duration-300 hover:scale-105 hover:border-[#f3e5ab] hover:text-[#fff] focus:outline-none focus:ring-2 focus:ring-[#d4af37]"
-          aria-label={isPlaying ? 'Mute Background Audio' : 'Play Background Audio'}
+          aria-label={isPlaying ? 'पार्श्वसंगीत बंद करा' : 'पार्श्वसंगीत सुरू करा'}
         >
           {isPlaying && (
             <span className="absolute inset-0 animate-ping rounded-full border border-[#d4af37]/40 opacity-75" />
@@ -157,7 +157,7 @@ export default function MusicPlayer({ isPlaying, setIsPlaying, autoStartTrigger 
 
           {/* Tooltip */}
           <span className="pointer-events-none absolute right-15 whitespace-nowrap rounded-md border border-[#d4af37]/30 bg-[#1e1812]/90 px-3 py-1.5 font-sans-clean text-xs font-light text-[#f5e6ca] opacity-0 shadow-lg transition-opacity duration-300 group-hover:opacity-100">
-            {isPlaying ? 'Mute Audio' : 'Play Audio'}
+            {isPlaying ? 'संगीत बंद करा' : 'संगीत सुरू करा'}
           </span>
         </button>
       </div>

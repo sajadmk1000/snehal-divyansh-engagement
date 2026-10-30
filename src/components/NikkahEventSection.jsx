@@ -27,14 +27,14 @@ export const NikkahEventSection = () => {
             <span 
               className="font-sans-clean font-medium text-[11px] xs:text-xs text-[#d4af37] tracking-[0.3em] uppercase whitespace-nowrap"
             >
-              SAKHARPUDA
+              साखरपुडा
             </span>
             
             <GoldOrnamentWingRight className="w-14 xs:w-16 sm:w-20 h-auto opacity-90 shrink-0" />
           </div>
 
           <h2 className="font-vibes text-[44px] xs:text-[52px] sm:text-[58px] text-[#f5d77f] leading-tight select-none mt-1 drop-shadow-md">
-            Save Our Date
+            शुभ मुहूर्त
           </h2>
         </motion.div>
 
@@ -53,7 +53,7 @@ export const NikkahEventSection = () => {
           <div className="w-full h-[240px] xs:h-[260px] relative overflow-hidden bg-[#15100a] shrink-0">
             <img 
               src="/images/couple/ring_ceremony.jpg" 
-              alt="Snehal & Divyansh ring ceremony" 
+              alt="स्नेहल व दिव्यांश यांचा साखरपुडा" 
               className="w-full h-full object-cover select-none block pointer-events-none hover:scale-105 transition-transform duration-700"
               style={{ objectPosition: 'center 66%', filter: 'sepia(0.25) saturate(0.95) contrast(1.05) brightness(0.9)' }}
             />
@@ -67,14 +67,14 @@ export const NikkahEventSection = () => {
             <p 
               className="font-sans-clean font-medium text-[11px] text-[#d4af37] uppercase mb-3 tracking-[0.3em]"
             >
-              ENGAGEMENT CEREMONY AT
+              साखरपुडा समारंभ स्थळ
             </p>
 
             {/* Venue Heading */}
             <h3 
               className="font-display font-medium text-[30px] xs:text-[34px] text-[#f7f3eb] leading-[1.15] mb-5 text-gold-glow"
             >
-              Saraswati Lawn
+              सरस्वती लॉन
             </h3>
 
             {/* Date Details */}
@@ -86,7 +86,7 @@ export const NikkahEventSection = () => {
                 <line x1="3" y1="10" x2="21" y2="10" />
               </svg>
               <span className="font-cormorant text-[16px] xs:text-[17px] font-normal text-[#f7f3eb]">
-                Thursday, 03 Dec 2026
+                गुरुवार, ०३ डिसेंबर २०२६
               </span>
             </div>
 
@@ -97,7 +97,7 @@ export const NikkahEventSection = () => {
                   <circle cx="12" cy="12" r="10" />
                   <polyline points="12 6 12 12 16 14" />
                 </svg>
-                6:30 PM – 8:30 PM
+                सायं. ६.३० ते रात्री ८.३०
               </span>
               
               <span className="flex items-center gap-1.5">
@@ -105,15 +105,15 @@ export const NikkahEventSection = () => {
                   <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
                   <circle cx="12" cy="10" r="3" />
                 </svg>
-                Tasgaon
+                तासगाव
               </span>
             </div>
 
             {/* Address & Landmark */}
             <p className="font-cormorant text-[14px] xs:text-[15px] italic text-[#c2b5a1] leading-[1.5] -mt-3 mb-6 xs:mb-7 max-w-[280px]">
-              Tasgaon–Vita Road, Tasgaon
+              तासगाव–विटा रोड, तासगाव
               <br />
-              Beside Saraswati Furniture, opp. Ayyangar Bakery
+              सरस्वती फर्निचरशेजारी, अय्यंगार बेकरीसमोर
             </p>
 
             {/* Open In Map Button - Metallic Gold Button */}
@@ -125,7 +125,7 @@ export const NikkahEventSection = () => {
               whileTap={{ scale: 0.96 }}
               className="w-full max-w-[210px] xs:max-w-[220px] h-[42px] xs:h-[44px] rounded-full bg-gradient-to-r from-[#d4af37] via-[#f5d77f] to-[#b8923f] text-[#0c0a08] font-sans-clean font-semibold text-[12.5px] xs:text-[13px] tracking-[0.1em] uppercase flex items-center justify-center shadow-[0_6px_20px_rgba(212,175,55,0.35)] transition-all cursor-pointer no-underline"
             >
-              <span>View Map Location</span>
+              <span>नकाशावर स्थळ पहा</span>
             </motion.a>
           </div>
         </motion.div>
