@@ -5,12 +5,12 @@ export default function HeroSection() {
   return (
     <section className="relative flex min-h-[100dvh] w-full flex-col items-center justify-center overflow-hidden px-4 pt-6 pb-12 sm:py-16 text-center bg-[#0a0908]">
       {/* Dark Romantic Couple Background Image */}
-      <div className="absolute inset-0 z-0 overflow-hidden opacity-25">
+      <div className="absolute inset-0 z-0 overflow-hidden opacity-30">
         <img
-          src="/images/couple/hero_couple.jpg"
+          src="/images/couple/swing_couple.png"
           alt="Snehal & Divyansh"
-          className="h-full w-full object-cover scale-105"
-          style={{ filter: 'sepia(0.35) saturate(0.95) contrast(1.1) brightness(0.95)' }}
+          className="h-full w-full object-contain object-bottom"
+          style={{ filter: 'sepia(0.35) saturate(0.95) contrast(1.05)' }}
         />
         <div className="absolute inset-0 bg-radial from-transparent via-[#0a0908]/80 to-[#0a0908]" />
         <div className="absolute inset-0 bg-gradient-to-b from-[#0a0908] via-transparent to-[#0a0908]" />

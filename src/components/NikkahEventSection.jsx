@@ -52,10 +52,10 @@ export const NikkahEventSection = () => {
           {/* Couple Image */}
           <div className="w-full h-[240px] xs:h-[260px] relative overflow-hidden bg-[#15100a] shrink-0">
             <img 
-              src="/images/couple/venue_couple.jpg" 
-              alt="Snehal & Divyansh" 
-              className="w-full h-full object-cover object-center select-none block pointer-events-none hover:scale-105 transition-transform duration-700"
-              style={{ filter: 'sepia(0.3) saturate(0.95) contrast(1.05) brightness(0.88)' }}
+              src="/images/couple/ring_ceremony.jpg" 
+              alt="Snehal & Divyansh ring ceremony" 
+              className="w-full h-full object-cover select-none block pointer-events-none hover:scale-105 transition-transform duration-700"
+              style={{ objectPosition: 'center 66%', filter: 'sepia(0.25) saturate(0.95) contrast(1.05) brightness(0.9)' }}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#140f0a] via-transparent to-black/20" />
           </div>

@@ -13,7 +13,7 @@ export const FooterSection = () => {
       {/* Background Stage Image */}
       <div
         className="absolute inset-0 pointer-events-none bg-cover bg-center opacity-25 filter contrast-110"
-        style={{ backgroundImage: `url('/images/couple/footer_couple.png')`, filter: 'sepia(0.35) contrast(1.1)' }}
+        style={{ backgroundImage: `url('/images/couple/ring_ceremony.jpg')`, backgroundPosition: 'center 70%', filter: 'sepia(0.35) contrast(1.1)' }}
       />
 
       {/* Darkened vignette overlay */}
