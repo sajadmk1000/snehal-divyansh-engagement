@@ -7,6 +7,6 @@
   NODE_VERSION = "22"
 
 [[headers]]
-  for = "/og-image.jpg"
+  for = "/og-sakharpuda.jpg"
   [headers.values]
     Cache-Control = "public, max-age=86400"
